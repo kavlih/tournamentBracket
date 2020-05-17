@@ -1,0 +1,330 @@
+/*
+1.  RESET
+2.  FONT
+3.  GENERAL
+4.  IMAGES
+5.  STYLES
+  5.1  Buttons
+6   TOURNAMENT BRACKET
+  6.1  bracket
+  6.2  rows
+  6.3  inputfields
+7.   SETTINGS
+*/
+
+/* 1. RESET ------------------------------------*/
+ html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+  vertical-align: baseline;
+  overflow: hidden;
+}
+*:focus{
+  outline: none;
+}
+
+/* 2. FONT ------------------------------------*/
+h2{
+  font-family: 'Passion One', cursive;
+  font-weight: 700;
+  font-size: 18pt;
+  text-transform: uppercase;
+  color: #2071A4;
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+p, input{
+  font-family: 'Press Start 2P';
+}
+
+/* 3. GENERAL ------------------------------------*/
+body{
+  width: 100vw;
+  min-width: 1150px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(89, 174, 249);
+}
+
+@media (max-height: 700px){
+  body{
+    align-items: flex-start;
+  }
+}
+
+#gradient{
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(89, 174, 249, 1) 25%, rgba(255,255,255,0) 50%);
+  z-index: 1;
+  position: absolute;
+}
+
+#background{
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  position: absolute;
+  bottom: 0;
+  z-index: -1;
+}
+
+/* 4. IMAGES ------------------------------------*/
+#logo{
+  margin-top: 10px;
+  position: absolute;
+  top: 0;
+}
+
+#logo img{
+  height: 30vh;
+  min-height: 210px;
+}
+
+#trophy{
+  width: 55px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* 5. STYLES ------------------------------------*/
+/* 5.1  Buttons ------------------*/
+button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Passion One', cursive;
+  font-weight: 400;
+  color: white;
+  cursor: pointer;
+  border: none;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+button.btn-wide{
+  width: 110px;
+  height: 35px;
+  font-size: 15pt;
+  border-radius: 20px;
+}
+
+button.btn-small{
+  width: 35px;
+  height: 35px;
+  font-size: 12pt;
+  border-radius: 50%;
+  transform: translate(1px, 0px);
+}
+
+button.toggle{
+  border: 2px dashed white;
+  background-color: transparent;
+}
+
+button.toggle.active{border: 2px solid white;}
+button.red{background-color: #FF7E6F;}
+button.grey{background-color: #84A8BC;}
+
+button.active, button:hover.active{background-color: #2071A4;}
+button:hover{
+  border: 2px solid white;
+}
+
+/* 6. TOURNAMENT BRACKET ------------------------------------*/
+/* 6.1  bracket ------------------*/
+#bracket{
+  width: 90vw;
+  max-width: 2200px;
+  min-width: 1150px;
+  height: 80vh;
+  max-height: 1000px;
+  min-height: 600px;
+  margin: 65px 6vw 50px;
+  position: relative;
+  z-index: 1;
+  transition: all 0.5s ease;
+}
+
+#bracket #background{
+  width: 100%;
+  height: 100%;
+}
+
+#bracket svg{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+#bracket .eight.left{order: 1;}
+#bracket .eight.right{order: 7;}
+#bracket .quarter.left{order: 2;}
+#bracket .quarter.right{order: 6;}
+#bracket .semi.left{order: 3;}
+#bracket .semi.right{order: 5;}
+#bracket .final{order: 4;}
+
+/* 6.2  rows ------------------*/
+#rows-container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#rows-container .rows.hidden{
+  width: 0px;
+  margin: 0;
+}
+
+.rows{
+  width: 180px;
+  transition: all 0.5s ease;
+  margin: 0 1%;
+}
+
+.rows:nth-child(1){margin-left: 0;}
+.rows:nth-child(2){margin-right: 0;}
+.rows.hidden ~ .rows:nth-child(3){margin-left: 0; transform: translate(-40px, 0);}
+.rows.hidden ~ .rows:nth-child(4){margin-right: 0; transform: translate(40px, 0);}
+.rows.hidden ~ .rows:nth-child(5){transform: translate(-20px, 0);}
+.rows.hidden ~ .rows:nth-child(6){transform: translate(20px, 0);}
+
+.rows{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.rows .box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  height: 25%;
+  padding: 20px 0;
+}
+
+.rows.semi .box{height: 50% !important;}
+
+/* 6.3  inputfields ------------------*/
+.textbox{
+  height: 100%;
+  width: 100%;
+  max-width: 180px;
+  min-width: 130px;
+  background-image: url(../assets/imgs/themes/taddl/textfield.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  transition: all 0.5s ease;
+}
+
+.textbox.lost{background-image: url(../assets/imgs/themes/taddl/textfield-lost.svg)}
+.textbox.won{background-image: url(../assets/imgs/themes/taddl/textfield-won.svg);}
+
+.rows.hidden .textbox{min-width: 0px !important;}
+
+input{
+  display: flex;
+  margin: auto;
+  height: 100%;
+  width: 80%;
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  font-size: 12pt;
+  color: white;
+  transform: translate(-1px, -2px);
+}
+
+/* 7. SETTINGS ------------------------------------*/
+#settings{
+  z-index: 1;
+  position: absolute;
+  bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#settings-icon{
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  overflow: visible;
+}
+
+#settings-icon path:not(#outline){
+  fill: white;
+  transform-origin: center;
+}
+
+#exit{transform: scale(0);}
+#outline{fill: none;}
+
+#settings.closed #settings-icon:hover #gearwheel, #settings.open #gearwheel{
+  animation: rotating 3s linear infinite;
+}
+
+@keyframes rotating {to {transform: rotate(360deg);}}
+
+#inner-settings{
+  margin-top: 25px;
+  padding: 0;
+  border: 1px solid white;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 0px;
+  background-color: rgba(143, 211, 250, 0.5);
+  height: 0;
+  width: 0;
+  opacity: 0;
+}
+
+#inner-settings > div:not(:first-child){
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 0;
+}
+
+#inner-settings > div > button{margin-top: 10px;}
+#inner-settings > #mid-icons > button:first-child{margin-top: 0;}
+
+#info{
+  color: white;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+#info i:hover{
+  color: #2071A4;
+  cursor: pointer;
+}

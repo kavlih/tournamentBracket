@@ -1,0 +1,52 @@
+#grid{
+  opacity: 0.5;
+  height: 80%;
+  width: 100%;
+  position: relative;
+  transform: perspective(400px) rotatex(45deg);
+}
+
+.line{
+  background-color: rgb(97, 189, 250);
+  box-shadow: 0px 3px 0px 0px rgba(77,154,222,0.2);
+}
+
+.line.left{box-shadow: 3px 3px 0px 0px rgba(77,154,222,0.2);
+}
+.line.right{box-shadow: -3px 3px 0px 0px rgba(77,154,222,0.2);
+}
+
+.lines-vertically.overlay .line{box-shadow: none !important;}
+.lines-vertically.overlay{z-index: 1;}
+
+.lines-horizontally, .lines-vertically{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.lines-vertically{
+  display: flex;
+  justify-content: space-between;
+}
+
+.lines-vertically .line{
+  height: 100%;
+  width: 7px;
+}
+
+.lines-horizontally .line{
+  height: 5px;
+  width: 100%;
+  margin-top: 50px;
+  
+  animation-name: move;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes move {
+  from  {transform: translate(0, -110px);}
+  to  {transform: translate(0, 0);}
+}
