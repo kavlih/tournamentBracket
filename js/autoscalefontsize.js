@@ -1,6 +1,9 @@
 const allTextFields = document.querySelectorAll('#rows-container input')
 
 for (let i = 0; i < allTextFields.length; i++) {
+  //set max lenght
+  allTextFields[i].maxLength = 12
+  //set default size
   allTextFields[i].style.fontSize = '12pt'
   //scaleFontSize(allTextFields[i])
   //trigger function on input change
