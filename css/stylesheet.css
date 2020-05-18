@@ -208,10 +208,15 @@ button:hover{
 
 .rows:nth-child(1){margin-left: 0;}
 .rows:nth-child(2){margin-right: 0;}
-.rows.hidden ~ .rows:nth-child(3){margin-left: 0; transform: translate(-40px, 0);}
-.rows.hidden ~ .rows:nth-child(4){margin-right: 0; transform: translate(40px, 0);}
-.rows.hidden ~ .rows:nth-child(5){transform: translate(-20px, 0);}
-.rows.hidden ~ .rows:nth-child(6){transform: translate(20px, 0);}
+.rows.hidden ~ .rows:nth-child(3){margin-left: 0;}
+.rows.hidden ~ .rows:nth-child(4){margin-right: 0;}
+
+@media (min-width: 1400px){
+  .rows.hidden ~ .rows:nth-child(3){transform: translate(-40px, 0);}
+  .rows.hidden ~ .rows:nth-child(4){transform: translate(40px, 0);}
+  .rows.hidden ~ .rows:nth-child(5){transform: translate(-20px, 0);}
+  .rows.hidden ~ .rows:nth-child(6){transform: translate(20px, 0);}
+}
 
 .rows{
   display: flex;

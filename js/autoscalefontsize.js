@@ -1,16 +1,28 @@
-const allInputs = document.querySelectorAll('#rows-container input')
+const allTextFields = document.querySelectorAll('#rows-container input')
 
-let fontSize = 12
-
-function isOverflown() {
-  
-  for (let i = 0; i < allInputs.length; i++) {
-
-    if (allInputs[i].scrollHeight > allInputs[i].clientHeight || allInputs[i].scrollWidth > allInputs[i].clientWidth){
-      allInputs[i].style.fontSize = `${fontSize-1}pt`
-      isOverflown()
-    }
-  }
+for (let i = 0; i < allTextFields.length; i++) {
+  allTextFields[i].style.fontSize = '12pt'
+  //scaleFontSize(allTextFields[i])
+  //trigger function on input change
+  allTextFields[i].addEventListener("input", (e) => scaleFontSize(e.target))
 }
 
-isOverflown()
+function scaleFontSize(input) {
+  console.log(input.style.fontSize);
+  
+  //if overflow
+  if (input.scrollHeight > input.clientHeight || input.scrollWidth > input.clientWidth){
+    //font-size -1
+    input.style.fontSize = parseInt(input.style.fontSize) - 1 + 'pt'  
+    //repeat
+    scaleFontSize(input)
+  } else {
+    //font-size +1
+    input.style.fontSize = parseInt(input.style.fontSize) + 1 + 'pt'
+    //if overflow or if max font-size
+    if (input.scrollHeight > input.clientHeight || input.scrollWidth > input.clientWidth || input.style.fontSize == '13pt') {
+      //font-size -1
+      input.style.fontSize = parseInt(input.style.fontSize) - 1 + 'pt'
+    } else {scaleFontSize(input)}
+  }
+}
