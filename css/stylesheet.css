@@ -160,10 +160,9 @@ button:hover{
   height: 80vh;
   max-height: 1000px;
   min-height: 600px;
-  margin: 65px 6vw 50px;
+  margin: 65px 6vw 0;
   position: relative;
   z-index: 1;
-  transition: all 0.5s ease-in-out;
 }
 
 #bracket #background{
@@ -195,40 +194,20 @@ button:hover{
   justify-content: space-between;
 }
 
-#rows-container .rows.hidden{
-  width: 0px;
-  margin: 0;
-}
-
-.rows{
-  width: 180px;
-  transition: all 0.5s ease-in-out;
-  margin: 0 1%;
-}
-
-.rows:nth-child(1){margin-left: 0;}
-.rows:nth-child(2){margin-right: 0;}
-.rows.hidden ~ .rows:nth-child(3){margin-left: 0;}
-.rows.hidden ~ .rows:nth-child(4){margin-right: 0;}
-
-@media (min-width: 1400px){
-  .rows.hidden ~ .rows:nth-child(3){transform: translate(-40px, 0);}
-  .rows.hidden ~ .rows:nth-child(4){transform: translate(40px, 0);}
-  .rows.hidden ~ .rows:nth-child(5){transform: translate(-20px, 0);}
-  .rows.hidden ~ .rows:nth-child(6){transform: translate(20px, 0);}
-}
-
 .rows{
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
+  margin: 0 1%;
 }
 
 .rows .box{
   display: flex;
   flex-direction: column;
   justify-content: center;
-
+  align-items: center;
+  width: 100%;
   height: 25%;
   padding: 20px 0;
 }
@@ -245,13 +224,10 @@ button:hover{
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  transition: all 0.5s ease-in-out;
 }
 
 .textbox.lost{background-image: url(../assets/imgs/themes/taddl/textfield-lost.svg)}
 .textbox.won{background-image: url(../assets/imgs/themes/taddl/textfield-won.svg);}
-
-.rows.hidden .textbox{min-width: 0px !important;}
 
 input{
   display: flex;

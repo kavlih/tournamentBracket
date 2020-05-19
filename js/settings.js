@@ -3,20 +3,12 @@ const settings = document.querySelector('#settings')
 
 // show settings
 settingsButton.addEventListener('click', () => {
+  // toggle gear rotation animation
   settings.classList.toggle('open')
   settings.classList.toggle('closed')
-
-  if (settings.classList.contains('open')) {
-    console.log('open');
-    // run animation    
-    tl.play()
-  }
-
-  if (settings.classList.contains('closed')) {
-    console.log('closed');
-    // run backwards
-    tl.reverse()
-  }
+  // runs timeline
+  if (settings.classList.contains('open')) tl.play()
+  if (settings.classList.contains('closed')) tl.reverse()
 })
 
 // open settings animation
@@ -55,6 +47,6 @@ tl.to('#inner-settings div', {
 }, 'step2')
 
 tl.to('#bracket', {
-  transform: 'translate(0, -30px)',
+  y: -30,
   ease: 'back'
 }, 'step2')

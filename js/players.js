@@ -1,13 +1,17 @@
 // background animation
-let tlBracketStrings = gsap.timeline({
+let tlBracketStrings = new gsap.timeline({
   paused:true, 
   defaults: {
     duration:0.5,
-    ease: Power1.easeInOut
+    ease: Power2.easeInOut
   }
 })
 
 tlBracketStrings
+// hide rows
+.to('#rows-container .rows.eight .textbox', {maxWidth: 0, minWidth: 0}, 0)
+.fromTo('#rows-container .rows.eight', {width: '100%', margin: '0 1%'}, {width: '0%', margin: '0 0%'}, 0)
+// animate svg background
 .to('#_1_erlines', {attr:{x1:"744.2",y1:"283.2",x2:"587.8",y2:"283.2"}}, 0)
 .to('#_1_erlines_1_', {attr:{x1:"744.2",y1:"475.7",x2:"894.4",y2:"475.7"}}, 0)
 .to('#_1_erlines_2_', {attr:{x1:"749.2",y1:"288.2",x2:"592.8",y2:"288.2"}}, 0)
@@ -41,8 +45,24 @@ tlBracketStrings
 .to('#_8_erlines_14_', {attr:{points:"1355.8,288.6 1355.8,288.6 1355.8,288.6 1355.8,288.6"}}, 0)
 .to('#_8_erlines_15_', {attr:{points:"1355.8,98.2 1355.8,98.2 1355.8,98.2 1355.8,98.2"}}, 0)
 
-const players = document.querySelectorAll('#players button')
+// translate textfields animation
+let tlTranslate = new gsap.timeline({
+  paused:true, 
+  defaults: {
+    duration:0.5,
+    ease: Power2.easeInOut
+  }
+})
 
+tlTranslate
+.to('.rows.quarter.left', {x:-40}, 0)
+.to('.rows.quarter.right', {x:40,}, 0)
+.to('.rows.semi.left', {x:-20}, 0)
+.to('.rows.semi.right', {x:20,}, 0)
+
+//---------------------------------------------------------------------------
+
+const players = document.querySelectorAll('#players button')
 // set default players
 let activePlayers = 1
 
@@ -51,27 +71,34 @@ function setPlayers(index) {
   players[activePlayers].classList.remove('active')
   activePlayers = index
   players[activePlayers].classList.add('active')
-  
-  // hide players
-  const eightRows = document.querySelectorAll('#rows-container .rows.eight')
-
+  // play animation
   if (activePlayers == 0) {
-    for (let i = 0; i < eightRows.length; i++) {
-      tlBracketStrings.play()
-      eightRows[i].classList.add('hidden')
+    tlBracketStrings.play()
+    if (window.matchMedia( "(min-width: 1400px)" ).matches) {
+      tlTranslate.play()
     }
   }
   if (activePlayers == 1) {
-    for (let i = 0; i < eightRows.length; i++) {
-      tlBracketStrings.reverse()
-      eightRows[i].classList.remove('hidden')
-    }
-  } 
+    tlBracketStrings.reverse()
+    tlTranslate.reverse()
+  }
 }
-
-// run players
+// run on load
 setPlayers(activePlayers)
-
+// check window resize for translate animation
+window.onresize = function() {
+  if (activePlayers == 0) {
+    if (window.matchMedia( "(min-width: 1400px)" ).matches) {
+      tlTranslate.play()
+    } else {
+      tlTranslate.reverse()
+    }
+  }
+  if (activePlayers == 1) {
+    tlTranslate.reverse()
+  }
+}
+// eventlistener on buttons
 for (let i = 0; i < players.length; i++) {
   players[i].addEventListener('click', (evt) => {
     setPlayers(evt.target.getAttribute('data-index'))
