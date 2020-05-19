@@ -163,7 +163,7 @@ button:hover{
   margin: 65px 6vw 50px;
   position: relative;
   z-index: 1;
-  transition: all 0.5s ease;
+  transition: all 0.5s ease-in-out;
 }
 
 #bracket #background{
@@ -202,7 +202,7 @@ button:hover{
 
 .rows{
   width: 180px;
-  transition: all 0.5s ease;
+  transition: all 0.5s ease-in-out;
   margin: 0 1%;
 }
 
@@ -245,7 +245,7 @@ button:hover{
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  transition: all 0.5s ease;
+  transition: all 0.5s ease-in-out;
 }
 
 .textbox.lost{background-image: url(../assets/imgs/themes/taddl/textfield-lost.svg)}
