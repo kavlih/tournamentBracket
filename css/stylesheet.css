@@ -9,7 +9,9 @@
   6.1  bracket
   6.2  rows
   6.3  inputfields
-7.   SETTINGS
+7.  SETTINGS
+8.  THEMES
+9.  GRID
 */
 
 /* 1. RESET ------------------------------------*/
@@ -45,8 +47,17 @@ h2{
   font-size: 18pt;
   text-transform: uppercase;
   color: #2071A4;
-  text-align: center;
   padding-bottom: 5px;
+}
+
+h3{
+  font-family: 'Passion One', cursive;
+  font-weight: 400;
+  font-size: 16pt;
+  text-transform: uppercase;
+  color: white;
+  text-align: center;
+  padding-bottom: 25px;
 }
 
 p, input{
@@ -77,10 +88,9 @@ body{
   position: absolute;
 }
 
-#background{
-  width: 100vw;
-  height: 100vh;
-  margin: 0;
+.background{
+  width: 100%;
+  height: 100%;
   position: absolute;
   bottom: 0;
   z-index: -1;
@@ -109,6 +119,7 @@ body{
 /* 5. STYLES ------------------------------------*/
 /* 5.1  Buttons ------------------*/
 button{
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -122,6 +133,7 @@ button{
 }
 
 button.btn-wide{
+  min-width: 95px;
   max-width: 110px;
   width: 100%;
   height: 35px;
@@ -142,12 +154,13 @@ button.toggle{
 }
 
 button.toggle.active{border: 2px solid white;}
-button.red{background-color: #FF7E6F;}
+button.red{background-color: rgb(225, 106, 106);}
 button.grey{background-color: #84A8BC;}
 
 button.active, button:hover.active{background-color: #2071A4;}
 button:hover{
   border: 2px solid white;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* 6. TOURNAMENT BRACKET ------------------------------------*/
@@ -160,11 +173,6 @@ button:hover{
   margin: 65px 6vw 0;
   position: relative;
   z-index: 1;
-}
-
-#bracket #background{
-  width: 100%;
-  height: 100%;
 }
 
 #bracket svg{
@@ -263,7 +271,7 @@ input{
 #exit{transform: scale(0);}
 #outline{fill: none;}
 
-#settings.closed #settings-icon:hover #gearwheel, #settings.open #gearwheel{
+#settings #settings-icon:hover #gearwheel, #settings.active #gearwheel{
   animation: rotating 3s linear infinite;
 }
 
@@ -277,7 +285,7 @@ input{
   display: flex;
   justify-content: space-between;
   border-radius: 0px;
-  background-color: rgba(143, 211, 250, 0.5);
+  background-color: rgba(143, 211, 250, 0.9);
   height: 0;
   width: 0;
   opacity: 0;
@@ -306,4 +314,60 @@ input{
 #info i:hover{
   color: #2071A4;
   cursor: pointer;
+}
+
+/* 7.2  Warning ------------------*/
+#reset{
+  position: absolute;
+  background-color: rgb(206, 96, 96);
+  top: 0;
+  left: 0;
+  justify-content: center !important;
+  transform: scale(1);
+  border-radius: 20px;
+}
+
+#reset:not(.hidden){
+  transition: all 0.4s ease;
+}
+
+#reset .btn-container{
+  display: flex;
+  width: 65%;
+  justify-content: space-between;
+}
+
+#reset.hidden{
+  top: 45px;
+  transform: scale(0);
+  border-radius: 150px;
+  opacity: 0 !important;
+}
+
+#reset button.cancel{opacity: 0.4;}
+#reset button.cancel:hover{opacity: 1;}
+#reset button.confirm{border: 2px solid white;}
+
+
+/* 8. THEMES ------------------------------------*/
+/* Not Availible yet*/
+#themes button:nth-child(3):after, #themes button:nth-child(3):before{
+  position: absolute;
+  content: "";
+  height: 2px;
+  background-color: red;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+}
+
+#themes button:nth-child(3):after{transform: translate(-50%, -50%) rotateZ(15deg)}
+#themes button:nth-child(3):before{transform: translate(-50%, -50%) rotateZ(-15deg)}
+
+/* 9. GRID ------------------------------------*/
+#grid{
+  opacity: 0.3;
+  height: 80%;
+  width: 100%;
+  /* more in grid.css */
 }

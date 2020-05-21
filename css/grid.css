@@ -1,7 +1,4 @@
 #grid{
-  opacity: 0.5;
-  height: 80%;
-  width: 100%;
   position: relative;
   transform: perspective(400px) rotatex(45deg);
 }
@@ -38,7 +35,7 @@
 .lines-horizontally .line{
   height: 5px;
   width: 100%;
-  margin-top: 50px;
+  margin-top: 40px;
   
   animation-name: move;
   animation-duration: 3s;
@@ -47,6 +44,6 @@
 }
 
 @keyframes move {
-  from  {transform: translate(0, -110px);}
+  from  {transform: translate(0, -90px);}
   to  {transform: translate(0, 0);}
 }

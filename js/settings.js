@@ -4,11 +4,10 @@ const settings = document.querySelector('#settings')
 // show settings
 settingsButton.addEventListener('click', () => {
   // toggle gear rotation animation
-  settings.classList.toggle('open')
-  settings.classList.toggle('closed')
+  settings.classList.toggle('active')
   // runs timeline
-  if (settings.classList.contains('open')) tl.play()
-  if (settings.classList.contains('closed')) tl.reverse()
+  if (settings.classList.contains('active')) tl.play()
+  else tl.reverse()
 })
 
 // open settings animation

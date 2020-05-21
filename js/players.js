@@ -9,6 +9,7 @@ let tlBracketStrings = new gsap.timeline({
 
 tlBracketStrings
 // hide rows
+.to('.textbox input', {opacity: 0})
 .to('#rows-container .rows.eight .textbox', {maxWidth: 0, minWidth: 0}, 0)
 .fromTo('#rows-container .rows.eight', {width: '100%', margin: '0 1%'}, {width: '0%', margin: '0 0%'}, 0)
 // animate svg background
