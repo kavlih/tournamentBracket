@@ -7,9 +7,10 @@
   5.1  Buttons
 6   TOURNAMENT BRACKET
   6.1  bracket
-  6.2  rows
-  6.3  inputfields
-  6.4  :after element
+  6.2  Bracket background lines
+  6.3  rows
+  6.4  inputfields
+  6.5  :after element
 7.  SETTINGS
   7.2  Warning
 8.  THEMES
@@ -38,11 +39,13 @@ time, mark, audio, video {
   vertical-align: baseline;
   overflow: hidden;
 }
+
 *:focus{
   outline: none;
 }
 
 /* 2. FONT ------------------------------------*/
+
 h2{
   font-family: 'Passion One', cursive;
   font-weight: 700;
@@ -67,27 +70,26 @@ p, input{
 }
 
 /* 3. GENERAL ------------------------------------*/
+:root{
+  --bg-color: rgb(40, 170, 255);
+  --bracket-line-color: rgb(70, 185, 255);
+  --bracket-line-shadow: rgb(30, 135, 200);
+  --settings-bg-color: rgb(90, 190, 255, 0.9);
+}
+
 body{
   width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(89, 174, 249);
+  background-color: rgb(40, 170, 255);
 }
 
 @media (max-height: 700px){
   body{
     align-items: flex-start;
   }
-}
-
-#gradient{
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(180deg, rgba(89, 174, 249, 1) 25%, rgba(255,255,255,0) 50%);
-  z-index: 1;
-  position: absolute;
 }
 
 .background{
@@ -97,6 +99,15 @@ body{
   bottom: 0;
   z-index: -1;
 }
+
+#gradient{
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, var(--bg-color) 25%, rgba(0,0,0,0) 50%);
+  z-index: 1;
+  position: absolute;
+}
+
 
 /* 4. IMAGES ------------------------------------*/
 #logo{
@@ -199,7 +210,19 @@ button:hover{
 #bracket .semi.right{order: 5;}
 #bracket .final{order: 4;}
 
-/* 6.2  rows ------------------*/
+/* 6.2  Bracket background lines ------------------*/
+#bracket .shaddow{opacity:0.5;}
+#bracket .st0{stroke:var(--bracket-line-shadow);}
+#bracket .st1{stroke:var(--bracket-line-color);}
+
+#bracket .st0, #bracket .st1{
+  fill:none;
+  stroke-width:10;
+  stroke-linejoin:round;
+  stroke-miterlimit:10;
+}
+
+/* 6.3  rows ------------------*/
 #rows-container{
   width: 100%;
   height: 100%;
@@ -227,7 +250,7 @@ button:hover{
 
 .rows.semi .box{height: 50% !important;}
 
-/* 6.3  inputfields ------------------*/
+/* 6.4  inputfields ------------------*/
 .textbox{
   height: 100%;
   width: 100%;
@@ -255,7 +278,7 @@ input{
   transform: translate(-1px, -2px);
 }
 
-/* 6.4  :after element ------------------*/
+/* 6.5  :after element ------------------*/
 .rows, .box, .textbox{
   overflow: visible;
 }
@@ -321,7 +344,7 @@ input{
   display: flex;
   justify-content: space-between;
   border-radius: 0px;
-  background-color: rgba(143, 200, 250, 0.9);
+  background-color: var(--settings-bg-color);
   height: 0;
   width: 0;
   opacity: 0;
@@ -402,7 +425,7 @@ input{
 
 /* 9. GRID ------------------------------------*/
 #grid{
-  opacity: 0.3;
+  opacity: 0.2;
   height: 80%;
   width: 100%;
   /* more in grid.css */
