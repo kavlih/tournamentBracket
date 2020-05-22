@@ -6,8 +6,11 @@ settingsButton.addEventListener('click', () => {
   // toggle gear rotation animation
   settings.classList.toggle('active')
   // runs timeline
-  if (settings.classList.contains('active')) tl.play()
-  else tl.reverse()
+  if (settings.classList.contains('active')) {
+    tl.play()
+    // hide warning if settings got closed while warning was visible
+    if (!clearWarning.classList.contains('hidden')) clearWarning.classList.add('hidden')
+  } else tl.reverse()
 })
 
 // open settings animation

@@ -9,7 +9,9 @@
   6.1  bracket
   6.2  rows
   6.3  inputfields
+  6.4  :after element
 7.  SETTINGS
+  7.2  Warning
 8.  THEMES
 9.  GRID
 */
@@ -105,15 +107,17 @@ body{
 
 #logo img{
   height: 30vh;
-  min-height: 210px;
 }
 
 #trophy{
-  width: 55px;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+
+#trophy img{
+  height: 5vh;
 }
 
 /* 5. STYLES ------------------------------------*/
@@ -130,6 +134,10 @@ button{
   border: none;
   box-sizing: border-box;
   margin: 0;
+}
+
+button:active, #settings-icon:active, #info:active, .textbox:after{
+  transform: scale(0.9);
 }
 
 button.btn-wide{
@@ -228,6 +236,7 @@ button:hover{
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+  position: relative;
 }
 
 .textbox.lost{background-image: url(../assets/imgs/themes/taddl/textfield-lost.svg)}
@@ -244,6 +253,33 @@ input{
   font-size: 12pt;
   color: white;
   transform: translate(-1px, -2px);
+}
+
+/* 6.4  :after element ------------------*/
+.rows, .box, .textbox{
+  overflow: visible;
+}
+
+.rows i{
+  top: 50%;
+  position: absolute;
+  opacity: 0;
+  font-size: 14pt;
+  color: white;
+}
+
+.rows.left i{
+  right: -7px;
+  transform: translate(50%, -50%);
+}
+
+.rows.right i{
+  left: -7px;
+  transform: translate(-50%, -50%);
+}
+
+.textbox:hover i{
+  opacity: 1;
 }
 
 /* 7. SETTINGS ------------------------------------*/
@@ -285,7 +321,7 @@ input{
   display: flex;
   justify-content: space-between;
   border-radius: 0px;
-  background-color: rgba(143, 211, 250, 0.9);
+  background-color: rgba(143, 200, 250, 0.9);
   height: 0;
   width: 0;
   opacity: 0;
