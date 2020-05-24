@@ -26,6 +26,7 @@ function shuffle() {
 
     for (let i = 0; i < allPlayers.length; i++) {
       allPlayers[i].value = allPlayersArr[index]
+      scaleFontSize(allPlayers[i])
       index++
     }
   })
