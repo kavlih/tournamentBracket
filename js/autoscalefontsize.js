@@ -29,3 +29,9 @@ function scaleFontSize(input) {
     } else {scaleFontSize(input)}
   }
 }
+
+window.addEventListener('resize', function(){
+  for (let i = 0; i < allTextFields.length; i++) {
+    scaleFontSize(allTextFields[i])
+  }
+});
