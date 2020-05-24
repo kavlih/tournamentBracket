@@ -52,3 +52,8 @@ tl.to('#bracket', {
   y: -30,
   ease: 'back'
 }, 'step2')
+// change opacity from small final
+tl.to('#smallfinal', {
+  opacity: 0.3,
+  duration: 0.2
+}, 'step2')

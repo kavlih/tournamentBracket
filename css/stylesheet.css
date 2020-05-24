@@ -456,6 +456,7 @@ input{
 #smallfinal .rows {
   width: 16.6%;
   height: 140%;
+  margin: 0 35px;
   transform: translate(0, -75px);
 }
 
@@ -465,8 +466,7 @@ input{
   opacity: 0;
   position: absolute;
   left: 50%;
-  transform: translate(-50%, -40px);
+  transform: translate(-50%, -35px);
 }
 
-#smallfinal-trophy img{height: 4vh;}
-
+#smallfinal-trophy img{height: 4.5vh;}
