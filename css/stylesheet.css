@@ -15,6 +15,7 @@
   7.2  Warning
 8.  THEMES
 9.  GRID
+10. Smallfinal
 */
 
 /* 1. RESET ------------------------------------*/
@@ -87,6 +88,7 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   background-color: rgb(40, 170, 255);
 }
 
@@ -182,7 +184,10 @@ button.toggle.active{border: 2px solid white;}
 button.red{background-color: rgb(225, 106, 106);}
 button.grey{background-color: #84A8BC;}
 
-button.active, button:hover.active{background-color: #2071A4;}
+button.active, button:hover.active{
+  background-color: #2071A4;
+}
+
 button:hover{
   border: 2px solid white;
   background-color: rgba(255, 255, 255, 0.2);
@@ -196,8 +201,9 @@ button:hover{
   height: 80vh;
   max-height: 1000px;
   margin: 65px 6vw 0;
-  position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 #bracket svg{
@@ -230,6 +236,7 @@ button:hover{
 
 /* 6.3  rows ------------------*/
 #rows-container{
+  position: relative;
   width: 100%;
   height: 100%;
   display: flex;
@@ -434,3 +441,32 @@ input{
   width: 100%;
   /* more in grid.css */
 }
+
+/* 10. Smallfinal ------------------------------------*/
+
+#smallfinal{
+  width: 100%;
+  height: 0%;
+  display: none;
+  justify-content: center;
+  position: relative;
+  overflow: visible;
+}
+
+#smallfinal .rows {
+  width: 16.6%;
+  height: 140%;
+  transform: translate(0, -75px);
+}
+
+#smallfinal .box {height: 100%;}
+
+#smallfinal-trophy{
+  opacity: 0;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -40px);
+}
+
+#smallfinal-trophy img{height: 4vh;}
+
