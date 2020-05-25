@@ -289,7 +289,8 @@ input{
 .rounds.left i:hover{right: -18px; transform: scale(1.1);}
 .rounds.right i:hover{left: -18px; transform: scale(1.1);}
 
-.rounds:not(.eighth) input:hover{cursor: default;}
+.rounds:not(.eighth) input{cursor: default;}
+/*.rounds.eighth.hidden ~ .rounds.quarter{cursor: text;}*/
 
 /* .6  Trophy img ------------------*/
 #trophy{
