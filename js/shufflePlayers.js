@@ -4,8 +4,8 @@ shuffleButton.addEventListener('click', () => {shuffle()})
 
 function shuffle() {
   // check how many players are playing (defined in players.js)
-  if (activePlayers == 0) allPlayers = document.querySelectorAll('.rows.quarter input')
-  if (activePlayers == 1) allPlayers = document.querySelectorAll('.rows.eight input')  
+  if (activePlayers == 0) allPlayers = document.querySelectorAll('.rounds.quarter input')
+  if (activePlayers == 1) allPlayers = document.querySelectorAll('.rounds.eighth input')  
   // create array from inputs
   allPlayersArr = [];
   for (let i = 0; i < allPlayers.length; i++) {

@@ -1,24 +1,24 @@
 /*
-1.  RESET
-2.  FONT
-3.  GENERAL
-4.  IMAGES
-5.  STYLES
-  5.1  Buttons
-6   TOURNAMENT BRACKET
-  6.1  bracket
-  6.2  Bracket background lines
-  6.3  rows
-  6.4  inputfields
-  6.5  textbox hover
-7.  SETTINGS
-  7.2  Warning
-8.  THEMES
-9.  GRID
-10. Smallfinal
+.  RESET
+.  FONT
+.  GENERAL
+.  STYLES
+  .1  Buttons
+.  TOURNAMENT BRACKET
+  .1  Bracket
+  .2  Bracket connections
+  .3  Rounds
+  .4  Textbox
+  .5  Textbox hover
+  .6  Trophy img
+.  SMALLFINAL
+.  BACKGROUND
+.  SETTINGS
+  .2  Warning
+.  THEMES
 */
 
-/* 1. RESET ------------------------------------*/
+/* . RESET ------------------------------------*/
  html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -45,7 +45,7 @@ time, mark, audio, video {
   outline: none;
 }
 
-/* 2. FONT ------------------------------------*/
+/* . FONT ------------------------------------*/
 
 h2{
   font-family: 'Passion One', cursive;
@@ -70,7 +70,7 @@ p, input{
   font-family: 'Press Start 2P';
 }
 
-/* 3. GENERAL ------------------------------------*/
+/* . GENERAL ------------------------------------*/
 :root{
   --bg-color: rgb(40, 170, 255);
   --bracket-line-color: rgb(70, 185, 255);
@@ -86,42 +86,12 @@ body{
   width: 100vw;
   height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   background-color: rgb(40, 170, 255);
 }
 
-@media (max-height: 700px){
-  body{
-    align-items: flex-start;
-  }
-}
-
-.background{
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  bottom: 0;
-  z-index: -1;
-}
-
-#bg.background{
-  display: flex;
-  align-items: flex-end;
-  width: 150%;
-}
-
-#gradient{
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(180deg, var(--bg-color) 25%, rgba(40, 170, 255, 0) 50%);
-  z-index: 1;
-  position: absolute;
-}
-
-
-/* 4. IMAGES ------------------------------------*/
 #logo{
   margin-top: 20px;
   position: absolute;
@@ -132,19 +102,8 @@ body{
   height: 30vh;
 }
 
-#trophy{
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-#trophy img{
-  height: 5vh;
-}
-
-/* 5. STYLES ------------------------------------*/
-/* 5.1  Buttons ------------------*/
+/* . STYLES ------------------------------------*/
+/* .1  Buttons ------------------*/
 button{
   position: relative;
   display: flex;
@@ -193,49 +152,49 @@ button:hover{
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* 6. TOURNAMENT BRACKET ------------------------------------*/
-/* 6.1  bracket ------------------*/
+/* . TOURNAMENT BRACKET ------------------------------------*/
+/* .1  Bracket ------------------*/
 #bracket{
   width: 90vw;
   max-width: 2200px;
   height: 80vh;
   max-height: 1000px;
-  margin: 65px 6vw 0;
+  margin: 5vh 6vw 0;
   z-index: 1;
   display: flex;
   flex-direction: column;
 }
 
-#bracket svg{
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
-
-#bracket .eight.left{order: 1;}
-#bracket .eight.right{order: 7;}
+#bracket .eighth.left{order: 1;}
+#bracket .eighth.right{order: 7;}
 #bracket .quarter.left{order: 2;}
 #bracket .quarter.right{order: 6;}
 #bracket .semi.left{order: 3;}
 #bracket .semi.right{order: 5;}
 #bracket .final{order: 4;}
 
-/* 6.2  Bracket background lines ------------------*/
-#bracket .shaddow{opacity:0.5;}
-#bracket .st0{stroke:var(--bracket-line-shadow);}
-#bracket .st1{stroke:var(--bracket-line-color);}
+/* .2  Bracket connections ------------------*/
+#connections{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
 
-#bracket .st0, #bracket .st1{
+#connections .shaddow{opacity:0.5;}
+#connections .st0{stroke:var(--bracket-line-shadow);}
+#connections .st1{stroke:var(--bracket-line-color);}
+
+#connections .st0, #connections .st1{
   fill:none;
   stroke-width:10;
   stroke-linejoin:round;
   stroke-miterlimit:10;
 }
 
-/* 6.3  rows ------------------*/
-#rows-container{
+/* .3  Rounds ------------------*/
+#rounds-container{
   position: relative;
   width: 100%;
   height: 100%;
@@ -243,31 +202,38 @@ button:hover{
   justify-content: space-between;
 }
 
-.rows{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  margin: 0 1%;
-}
-
-.rows .box{
+.rounds{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 25%;
-  padding: 20px 0;
+  margin: 0 1%;
 }
 
-.rows.semi .box{height: 50% !important;}
+.textbox-container{
+  height: 25%;
+  padding: 15px 0;
+}
 
-/* 6.4  inputfields ------------------*/
+.rounds.semi .textbox, .rounds.eighth .textbox {
+  height: 50% !important;
+}
+
+.textbox.ph{
+  background-image:none;
+  visibility: hidden;
+}
+
+/* .4  Textbox ------------------*/
 .textbox{
-  height: 100%;
+  height: 25%;
   width: 100%;
   max-width: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   background-image: url(../assets/imgs/themes/taddl/textfield.svg);
   background-repeat: no-repeat;
   background-position: center;
@@ -291,8 +257,8 @@ input{
   transform: translate(-1px, -2px);
 }
 
-/* 6.5  textbox hover ------------------*/
-.rows, .box, .textbox{
+/* .5  Textbox hover ------------------*/
+.rounds, .box, .textbox{
   overflow: visible;
 }
 
@@ -309,14 +275,87 @@ input{
 
 .textbox:hover i{opacity: 0.8;}
 .textbox i:hover{color: rgb(255, 255, 0); opacity: 1;}
-.rows.left i{right: -7px; transform: translate(50%, -50%);}
-.rows.right i{left: -7px; transform: translate(-50%, -50%);}
-.rows.left i:hover{right: -10px; transform: translate(50%, -50%) scale(1.3);}
-.rows.right i:hover{left: -10px; transform: translate(-50%, -50%) scale(1.3);}
-.rows.left .textbox:active i:hover{transform: translate(50%, -50%);}
-.rows.right .textbox:active i:hover{transform: translate(-50%, -50%);}
+.rounds.left i{right: -7px; transform: translate(50%, -50%);}
+.rounds.right i{left: -7px; transform: translate(-50%, -50%);}
+.rounds.left i:hover{right: -10px; transform: translate(50%, -50%) scale(1.3);}
+.rounds.right i:hover{left: -10px; transform: translate(-50%, -50%) scale(1.3);}
+.rounds.left .textbox:active i:hover{transform: translate(50%, -50%);}
+.rounds.right .textbox:active i:hover{transform: translate(-50%, -50%);}
 
-/* 7. SETTINGS ------------------------------------*/
+/* .6  Trophy img ------------------*/
+#trophy{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#trophy img{
+  height: 5vh;
+}
+
+/* . SMALLFINAL ------------------------------------*/
+#side-bracket {
+  width: 100%;
+  height: 0%;
+  display: none;
+  justify-content: center;
+  overflow: visible;
+  position: absolute;
+  bottom: 7%;
+}
+
+#side-bracket .rounds {
+  width: 12.5%;
+  height: 100%;
+  margin: 0 10px;
+  max-width: 180px;
+}
+
+#side-bracket .textbox {
+  height: 100%;
+}
+
+#smallfinal-trophy {
+  width: 10%;
+  max-width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+}
+
+#smallfinal-trophy img{
+  height: 4.5vh;
+}
+
+/* . BACKGROUND ------------------------------------*/
+#background{
+  height: 100%;
+  width: 150%;
+  display: flex;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 0;
+  z-index: -1;
+}
+
+#gradient{
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, var(--bg-color) 25%, rgba(40, 170, 255, 0) 50%);
+  z-index: 1;
+  position: absolute;
+}
+
+#grid{
+  opacity: 0.2;
+  height: 80%;
+  width: 100%;
+  /* More in grid.css */
+}
+
+/* . SETTINGS ------------------------------------*/
 #settings{
   z-index: 1;
   position: absolute;
@@ -386,7 +425,7 @@ input{
   cursor: pointer;
 }
 
-/* 7.2  Warning ------------------*/
+/* .2  Warning ------------------*/
 #reset{
   position: absolute;
   background-color: rgb(206, 96, 96);
@@ -418,9 +457,7 @@ input{
 #reset button.cancel:hover{opacity: 1;}
 #reset button.confirm{border: 2px solid white;}
 
-
-/* 8. THEMES ------------------------------------*/
-/* Not Availible yet*/
+/* . THEMES ------------------------------------*/
 #themes button:nth-child(3):after, #themes button:nth-child(3):before{
   position: absolute;
   content: "";
@@ -430,43 +467,5 @@ input{
   top: 50%;
   left: 50%;
 }
-
 #themes button:nth-child(3):after{transform: translate(-50%, -50%) rotateZ(15deg)}
 #themes button:nth-child(3):before{transform: translate(-50%, -50%) rotateZ(-15deg)}
-
-/* 9. GRID ------------------------------------*/
-#grid{
-  opacity: 0.2;
-  height: 80%;
-  width: 100%;
-  /* more in grid.css */
-}
-
-/* 10. Smallfinal ------------------------------------*/
-
-#smallfinal{
-  width: 100%;
-  height: 0%;
-  display: none;
-  justify-content: center;
-  position: relative;
-  overflow: visible;
-}
-
-#smallfinal .rows {
-  width: 16.6%;
-  height: 140%;
-  margin: 0 35px;
-  transform: translate(0, -75px);
-}
-
-#smallfinal .box {height: 100%;}
-
-#smallfinal-trophy{
-  opacity: 0;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, -35px);
-}
-
-#smallfinal-trophy img{height: 4.5vh;}

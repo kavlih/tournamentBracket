@@ -8,10 +8,10 @@ let tlBracketStrings = new gsap.timeline({
 })
 
 tlBracketStrings
-// hide rows
-.to('.rows.eight .textbox input', {opacity: 0})
-.to('#rows-container .rows.eight .textbox', {maxWidth: 0, minWidth: 0}, 0)
-.fromTo('#rows-container .rows.eight', {width: '100%', margin: '0 1%'}, {width: '0%', margin: '0 0%'}, 0)
+// hide rounds
+.to('.rounds.eighth .textbox input', {opacity: 0})
+.to('#rounds-container .rounds.eighth .textbox', {maxWidth: 0, minWidth: 0}, 0)
+.fromTo('#rounds-container .rounds.eighth', {width: '100%', margin: '0 1%'}, {width: '0%', margin: '0 0%'}, 0)
 // animate svg background
 .to('#_1_erlines', {attr:{x1:"744.2",y1:"283.2",x2:"587.8",y2:"283.2"}}, 0)
 .to('#_1_erlines_1_', {attr:{x1:"744.2",y1:"475.7",x2:"894.4",y2:"475.7"}}, 0)
@@ -56,10 +56,10 @@ let tlTranslate = new gsap.timeline({
 })
 
 tlTranslate
-.to('.rows.quarter.left', {x:-40}, 0)
-.to('.rows.quarter.right', {x:40,}, 0)
-.to('.rows.semi.left', {x:-20}, 0)
-.to('.rows.semi.right', {x:20,}, 0)
+.to('.rounds.quarter.left', {x:-40}, 0)
+.to('.rounds.quarter.right', {x:40,}, 0)
+.to('.rounds.semi.left', {x:-20}, 0)
+.to('.rounds.semi.right', {x:20,}, 0)
 
 //---------------------------------------------------------------------------
 

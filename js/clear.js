@@ -11,8 +11,8 @@ clearButton.addEventListener('click', () => {
   })
   // clear all
   document.querySelector('#reset button.confirm').addEventListener('click', () => {
-    for (let i = 0; i < document.querySelectorAll('#rows-container input').length; i++) {
-      document.querySelectorAll('#rows-container input')[i].value = ''
+    for (let i = 0; i < document.querySelectorAll('#rounds-container input').length; i++) {
+      document.querySelectorAll('#rounds-container input')[i].value = ''
       document.querySelectorAll('.textbox')[i].classList.remove('won')
       document.querySelectorAll('.textbox')[i].classList.remove('lost')
     }

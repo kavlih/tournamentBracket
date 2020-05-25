@@ -1,4 +1,4 @@
-let tlSmallFinal = new gsap.timeline ({
+let tlsideBracket = new gsap.timeline ({
   paused: true, 
   defaults: {
     duration: 0.5, 
@@ -6,25 +6,25 @@ let tlSmallFinal = new gsap.timeline ({
   }
 })
   
-tlSmallFinal
-.set('#smallfinal', {display: 'flex'}, 0)
-.to('#smallfinal', {height: '10%'}, 0)
+tlsideBracket
+.set('#side-bracket', {display: 'flex'}, 0)
+.to('#side-bracket', {height: '10%'}, 0)
+.fromTo('#rounds-container', {height: '100%'}, {height: '95%'}, 0)
 .to('#smallfinal-trophy', {opacity: 1}, 0)
 
-const smallFinalBtn = document.querySelector('#btn-3rd')
+const sideBracketBtn = document.querySelector('#btn-3rd')
 
-let activeSF = false
+let activeSB = false
 
-smallFinalBtn.addEventListener('click', () => {
-  console.log(activeSF);
-  
-  if (activeSF === true) {
-    smallFinalBtn.classList.remove('active')
-    tlSmallFinal.reverse()
-    activeSF = false
+sideBracketBtn.addEventListener('click', () => {  
+  if (activeSB === true) {
+    sideBracketBtn.classList.remove('active')
+    tlsideBracket.reverse()
+    activeSB = false
   } else {
-    smallFinalBtn.classList.add('active')
-    tlSmallFinal.play()
-    activeSF = true
+    sideBracketBtn.classList.add('active')
+    tlsideBracket.play()
+    activeSB = true
   }
+  console.log(activeSB);
 })

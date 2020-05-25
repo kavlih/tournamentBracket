@@ -1,4 +1,4 @@
-const allTextFields = document.querySelectorAll('#rows-container input')
+const allTextFields = document.querySelectorAll('#rounds-container input')
 
 for (let i = 0; i < allTextFields.length; i++) {
   //set max lenght
