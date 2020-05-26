@@ -1,26 +1,15 @@
-const shuffleButton = document.querySelector('#btn-shuffle')
-
-shuffleButton.addEventListener('click', () => {shuffle()})
-
-function shuffle() {
-  // check how many players are playing (defined in players.js)
+(function(){
+  // Check how many players are playing (defined in players.js)
   if (activePlayers == 0) allPlayers = document.querySelectorAll('.rounds.quarter input')
-  if (activePlayers == 1) allPlayers = document.querySelectorAll('.rounds.eighth input')  
-  // create array from inputs
-  allPlayersArr = [];
-  for (let i = 0; i < allPlayers.length; i++) {
-    allPlayersArr.push(allPlayers[i].value);
-  }
-  // shuffle array
-  shuffleArr(allPlayersArr)
+  if (activePlayers == 1) allPlayers = document.querySelectorAll('.rounds.eighth input')
 
-  // gsap timeline ------------------------------------------
-  let tlShuffle = new gsap.timeline({defaults: {ease: Power1.easeInOut}})
+  // GSAP Timeline ------------------------------------------
+  const tlShuffle = new gsap.timeline({paused: true, defaults: {ease: Power1.easeInOut}})
 
   tlShuffle
   .fromTo(allPlayers, {opacity: 1}, {opacity: 0})
   
-  // append shuffled players
+  // Append shuffled players
   .add(function () {
     let index = 0
 
@@ -39,21 +28,36 @@ function shuffle() {
     scale: 1,
   })
 
-  console.log(allPlayersArr);
-}
+  // Event listener ------------------------------------------
+  document.querySelector('#btn-shuffle').addEventListener('click', () => {
+    if (!tlShuffle.isActive()) {
+      // Create array from inputs
+      allPlayersArr = [];
+      for (let i = 0; i < allPlayers.length; i++) {
+        allPlayersArr.push(allPlayers[i].value)
+      }
+      // Shuffle array
+      shuffleArr(allPlayersArr)
+      console.log(allPlayersArr)
+      // Run GSAP timeline
+      tlShuffle.play(0)
+    }
+  })
 
-function shuffleArr(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex;
+  // Shuffle function ------------------------------------------
+  function shuffleArr(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
 
-  // while there remain elements to shuffle
-  while (0 !== currentIndex) {
-    // pick a remaining element
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-    // swap it with the current element
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
+    // While there remain elements to shuffle
+    while (0 !== currentIndex) {
+      // Pick a remaining element
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      // Swap it with the current element
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
   }
-  return array;
-}
+})()

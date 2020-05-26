@@ -78,7 +78,7 @@ p, input{
   --settings-bg-color: rgb(90, 190, 255, 0.9);
 }
 
-.rounds, .textbox, .textbox-container, #side-bracket, #settings-icon{
+.rounds, .textbox, .textbox-container, #side-bracket, #settings-icon, #trophy{
   overflow: visible;
 }
 
@@ -298,10 +298,20 @@ input{
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 1;
+  height: 10vh;
+  width: 10vh;
+  transition: all 0.5s ease;
 }
 
-#trophy img{
-  height: 5vh;
+#trophy:hover{
+  transform: translate(-50%, -50%) scale(1.1) rotate(3deg);
+  background: radial-gradient(circle, rgba(255, 190, 0, 0.5), rgba(255, 190, 0, 0) 60%);
+}
+
+#trophy svg{
+  height: 50%;
 }
 
 /* . SMALLFINAL ------------------------------------*/

@@ -1,30 +1,34 @@
-let tlsideBracket = new gsap.timeline ({
-  paused: true, 
-  defaults: {
-    duration: 0.5, 
-    ease: Power1.easeInOut
-  }
-})
+(function(){
+  // GSAP Timeline ------------------------------------------
+  const tlsideBracket = new gsap.timeline ({
+    paused: true, 
+    defaults: {
+      duration: 0.5, 
+      ease: Power1.easeInOut
+    }
+  })
+    
+  tlsideBracket
+  .set('#side-bracket', {display: 'flex'}, 0)
+  .to('#side-bracket', {height: '10%'}, 0)
+  .fromTo('#rounds-container', {height: '100%'}, {height: '95%'}, 0)
+  .to('#smallfinal-trophy', {opacity: 1}, 0)
   
-tlsideBracket
-.set('#side-bracket', {display: 'flex'}, 0)
-.to('#side-bracket', {height: '10%'}, 0)
-.fromTo('#rounds-container', {height: '100%'}, {height: '95%'}, 0)
-.to('#smallfinal-trophy', {opacity: 1}, 0)
-
-const sideBracketBtn = document.querySelector('#btn-3rd')
-
-let activeSB = false
-
-sideBracketBtn.addEventListener('click', () => {  
-  if (activeSB === true) {
-    sideBracketBtn.classList.remove('active')
-    tlsideBracket.reverse()
-    activeSB = false
-  } else {
-    sideBracketBtn.classList.add('active')
-    tlsideBracket.play()
-    activeSB = true
-  }
-  console.log(activeSB);
-})
+  // Event listener ------------------------------------------
+  const sideBracketBtn = document.querySelector('#btn-3rd')
+  
+  let activeSB = false
+  
+  sideBracketBtn.addEventListener('click', () => {  
+    if (activeSB === true) {
+      sideBracketBtn.classList.remove('active')
+      tlsideBracket.reverse()
+      activeSB = false
+    } else {
+      sideBracketBtn.classList.add('active')
+      tlsideBracket.play()
+      activeSB = true
+    }
+    console.log(activeSB);
+  })
+})()
