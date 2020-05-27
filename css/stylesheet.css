@@ -167,6 +167,7 @@ button:hover{
   z-index: 1;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 #bracket .eighth.left{order: 1;}
@@ -302,7 +303,7 @@ input{
   z-index: 1;
   height: 10vh;
   width: 10vh;
-  transition: all 0.5s ease;
+  transition: all 0.2s ease;
 }
 
 #trophy:hover{
@@ -316,7 +317,7 @@ input{
 
 /* . SMALLFINAL ------------------------------------*/
 #side-bracket {
-  width: 100%;
+  width: 40%;
   height: 0%;
   display: none;
   justify-content: center;
@@ -325,7 +326,7 @@ input{
 }
 
 #side-bracket .rounds {
-  width: 12.5%;
+  width: 30%;
   height: 100%;
   margin: 0 10px;
   max-width: 180px;

@@ -1,7 +1,7 @@
 (function(){
   // GSAP Timeline 1 ------------------------------------------
   // Widen strings
-  let tlBracketStrings = new gsap.timeline({
+  const tlBracketStrings = new gsap.timeline({
     paused:true, 
     defaults: {
       duration:0.5,
@@ -51,7 +51,7 @@
   
   // GSAP Timeline 1 ------------------------------------------
   // Translate textfields
-  let tlTranslate = new gsap.timeline({
+  const tlTranslate = new gsap.timeline({
     paused:true, 
     defaults: {
       duration:0.5,
