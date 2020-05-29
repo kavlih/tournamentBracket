@@ -78,7 +78,7 @@ p, input{
   --settings-bg-color: rgb(90, 190, 255, 0.9);
 }
 
-.rounds, .textbox, .textbox-container, #side-bracket, #settings-icon, #trophy{
+.rounds, .textbox, .teams, #side-bracket, #settings-icon, #trophy{
   overflow: visible;
 }
 
@@ -216,23 +216,13 @@ button:hover{
   margin: 0 1%;
 }
 
-.textbox-container{
-  height: 25%;
-  padding: 15px 0;
-}
-
-.rounds.semi .textbox, .rounds.eighth .textbox {
-  height: 50% !important;
-}
-
-.textbox.ph{
-  background-image:none;
-  visibility: hidden;
-}
+.rounds.eighth .teams {height: 25%; padding: 15px 0;}
+.rounds.quarter .teams, .rounds.final .teams {height: 50%;}
+.rounds.semi .teams {height: 100%;}
 
 /* .4  Textbox ------------------*/
 .textbox{
-  height: 25%;
+  height: 50%;
   width: 100%;
   max-width: 180px;
   display: flex;

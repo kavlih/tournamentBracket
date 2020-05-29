@@ -3,13 +3,13 @@
   const allInputs = document.querySelectorAll('#rounds-container input')
 
   for (let i = 0; i < allInputs.length; i++) {
-    // Run function on start (use only if there player placeholders)
     // Set max lenght
     allInputs[i].maxLength = 12
     // Set default font-size
     allInputs[i].style.fontSize = '11pt'
     // Trigger function on input change
     allInputs[i].addEventListener("input", (e) => scaleFontSize(e.target))
+    // Run function on start (use only if there player placeholders)
     scaleFontSize(allInputs[i])
   }
 
