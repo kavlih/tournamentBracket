@@ -1,71 +1,114 @@
-const nextBtn = document.querySelectorAll('#bracket i')
+const allInputs = document.querySelectorAll('#rounds-container input')
 
-for (let i = 0; i < nextBtn.length; i++) {
-  nextBtn[i].addEventListener('click', (e) => {
-    if (i >= 16) {i = i - 16
-      if (i >= 8) {i = i - 8
-        if (i >= 4) {i = i - 4}
-      }
-    }
-    getPlayerInfos(i, e.target.parentNode)
-  })
+for (let i = 0; i < allInputs.length; i++) {
+  // Trigger function on input change
+  allInputs[i].addEventListener("input", (e) => showArrows(e.target))
+  // Run function on start (use only if there are player placeholders)
+  showArrows(allInputs[i])
 }
 
-function getPlayerInfos(index, target) {
-  // Get winner and loser
-  winner = target.querySelector('input')
-
-  if (target == target.parentNode.children[0]) loser = target.parentNode.children[1].querySelector('input')
-  else loser = target.parentNode.children[0].querySelector('input')
-
-  if (!loser.value == '' && !winner.value == '') {
-    console.group()
-    console.log('Winner: ' + winner.value);
-    console.log('Loser: ' + loser.value);
-
-    // Get played round and define next round
-    let round = target.parentNode.parentNode
-
-    if (round.classList.contains('eighth')) {
-      playedRound = 'Round of 16'
-      newRound = document.querySelectorAll('.rounds.quarter input')
-    }
-    if (round.classList.contains('quarter')) {
-      playedRound = 'Quarter final'
-      newRound = document.querySelectorAll('.rounds.semi input')
-    }
-    if (round.classList.contains('semi')) {
-      playedRound = 'Semi final'
-      newRound = document.querySelectorAll('.rounds.final input')
-    }
-    if (round.classList.contains('final')) {
-      playedRound = 'Final'
-    }
-
-    console.log('Round: ' + playedRound);
-    console.log('Index of player: ' + (index+1))
-    console.groupEnd()
-
-    // Place winner in next round
-    newRound[Math.floor(index/2)].value = winner.value
-
-    // Add css classes to winner and loser
-    if (!winner.parentNode.classList.contains('won')) {
-
-      let activeTeam = winner.parentNode.parentNode.children
-
-      for (let i = 0; i < activeTeam.length; i++) {
-        // activeTeam[i].classList.remove('won')
-        // activeTeam[i].classList.remove('lost')
-        gsap.to(activeTeam[i], {opacity: 1})
-      }
-
-      // winner.parentNode.classList.add('won')
-      // loser.parentNode.classList.add('lost')
-      gsap.to(loser.parentNode, {opacity: 0.6})
-    }
-
-    // Check for font size
-    scaleFontSize(newRound[Math.floor(index/2)])
+// Show arrows function ------------------------------------------
+function showArrows(index) {
+  if (!index.value == '') {
+    index.parentNode.classList.add('hover')
+    console.log('add');
+  } else {
+    index.parentNode.classList.remove('hover')
+    console.log('noadd');
   }
 }
+
+// Update Winner function ------------------------------------------
+(function(){
+  const allNextBtns = document.querySelectorAll('#bracket i')
+
+  for (let i = 0; i < allNextBtns.length; i++) {
+    allNextBtns[i].addEventListener('click', (e) => {
+      if (i >= 16) {i = i - 16
+        if (i >= 8) {i = i - 8
+          if (i >= 4) {i = i - 4}
+        }
+      }
+      updateWinner(i, e.target.parentNode)
+    })
+  }
+
+  function updateWinner(index, target) {
+    // Get winner and loser
+    winner = target.querySelector('input')
+
+    if (target == target.parentNode.children[0]) loser = target.parentNode.children[1].querySelector('input')
+    else loser = target.parentNode.children[0].querySelector('input')
+
+    if (!loser.value == '' && !winner.value == '') {
+      console.group()
+      console.log('Winner: ' + winner.value);
+      console.log('Loser: ' + loser.value);
+
+      // Get played round and set new round
+      let round = target.parentNode.parentNode
+
+      if (round.classList.contains('eighth')) {
+        playedRound = 'Round of 16'
+        newRound = document.querySelectorAll('.rounds.quarter input')
+      }
+      if (round.classList.contains('quarter')) {
+        playedRound = 'Quarter final'
+        newRound = document.querySelectorAll('.rounds.semi input')
+      }
+      if (round.classList.contains('semi')) {
+        playedRound = 'Semi final'
+        newRound = document.querySelectorAll('.rounds.final input')
+      }
+      if (round.classList.contains('final')) {
+        playedRound = 'Final'
+      }
+
+      console.log('Round: ' + playedRound);
+      console.log('Index of player: ' + (index+1))
+      console.groupEnd()
+
+      // Set new Index
+      newIndex = newRound[Math.floor(index/2)]
+      // Add winner to new round
+      newIndex.value = winner.value
+
+      // Add css classes to winner and loser
+      if (!winner.parentNode.classList.contains('won')) {
+
+        let activeTeam = winner.parentNode.parentNode.children
+
+        for (let i = 0; i < activeTeam.length; i++) {
+          activeTeam[i].classList.remove('won')
+          activeTeam[i].classList.remove('lost')
+        }
+
+        winner.parentNode.classList.add('won')
+        loser.parentNode.classList.add('lost')
+
+        // GSAP Animation
+        const tlUpdateWinner = new gsap.timeline({
+          onStart: function () {
+            gsap.set(loser, {clearProps: 'opacity'});
+            gsap.set(winner, {clearProps: 'opacity'});
+          }
+        })
+
+        tlUpdateWinner
+        .to(loser, {opacity: 0.4}, 0)
+        .fromTo(newIndex, {opacity: 0}, {opacity: 1}, 0)
+      }
+
+      // Check font size
+      scaleFontSize(newIndex)
+      showArrows(newIndex)
+    } else {
+      console.log('please add a player');
+    }
+  }
+})()
+
+// Add 'please add a player' message
+// Add losers of semi finals to small final
+// Add Animation for final
+// Add Animation for 3rd

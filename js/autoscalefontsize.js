@@ -9,7 +9,7 @@
     allInputs[i].style.fontSize = '11pt'
     // Trigger function on input change
     allInputs[i].addEventListener("input", (e) => scaleFontSize(e.target))
-    // Run function on start (use only if there player placeholders)
+    // Run function on start (use only if there are player placeholders)
     scaleFontSize(allInputs[i])
   }
 
