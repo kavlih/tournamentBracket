@@ -1,24 +1,3 @@
-const allInputs = document.querySelectorAll('#rounds-container input')
-
-for (let i = 0; i < allInputs.length; i++) {
-  // Trigger function on input change
-  allInputs[i].addEventListener("input", (e) => showArrows(e.target))
-  // Run function on start (use only if there are player placeholders)
-  showArrows(allInputs[i])
-}
-
-// Show arrows function ------------------------------------------
-function showArrows(index) {
-  if (!index.value == '') {
-    index.parentNode.classList.add('hover')
-    console.log('add');
-  } else {
-    index.parentNode.classList.remove('hover')
-    console.log('noadd');
-  }
-}
-
-// Update Winner function ------------------------------------------
 (function(){
   const allNextBtns = document.querySelectorAll('#bracket i')
 
@@ -86,8 +65,11 @@ function showArrows(index) {
         winner.parentNode.classList.add('won')
         loser.parentNode.classList.add('lost')
 
-        // GSAP Animation
+        // GSAP Animation ------------------------------------------
         const tlUpdateWinner = new gsap.timeline({
+          defaults: {
+            delay: 0.2,
+          },
           onStart: function () {
             gsap.set(loser, {clearProps: 'opacity'});
             gsap.set(winner, {clearProps: 'opacity'});
@@ -95,8 +77,11 @@ function showArrows(index) {
         })
 
         tlUpdateWinner
-        .to(loser, {opacity: 0.4}, 0)
-        .fromTo(newIndex, {opacity: 0}, {opacity: 1}, 0)
+        .to(loser, {opacity: 0.4}, 0.3)
+        .from(newIndex, {opacity: 0}, 0)
+
+        if (newIndex.parentNode.parentNode.parentNode.classList.contains('left')) tlUpdateWinner.from(newIndex, {x: -40}, 0)
+        if (newIndex.parentNode.parentNode.parentNode.classList.contains('right')) tlUpdateWinner.from(newIndex, {x: 40}, 0)
       }
 
       // Check font size

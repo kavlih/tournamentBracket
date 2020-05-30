@@ -265,23 +265,18 @@ input{
   color: white;
 }
 
-.textbox.hover:hover i{opacity: 0.8; display: flex;}
-.textbox i:hover{color: rgb(255, 255, 0); opacity: 1 !important; cursor: pointer;}
-.rounds.left i, .rounds.left .textbox:active i:hover{
+.textbox.hover:hover i{
+  opacity: 0.6; 
+  display: flex;}
+
+.rounds.left i, .rounds.left{
   right: -15px; 
   justify-content: flex-end;
-  transform: scale(1)
 }
-.rounds.right i, .rounds.right .textbox:active i:hover{
+.rounds.right i, .rounds.right{
   left: -15px; 
   justify-content: flex-start;
-  transform: scale(1)
 }
-.rounds.left i:hover{right: -13px; transform: scale(1.1);}
-.rounds.right i:hover{left: -13px; transform: scale(1.1);}
-
-.rounds.final .top i:hover{transform: translate(0, 43%) scale(1.1) !important}
-.rounds.final .bottom i:hover{transform: translate(0, -43%) scale(1.1) !important}
 
 .rounds:not(.eighth) input{cursor: default;}
 
