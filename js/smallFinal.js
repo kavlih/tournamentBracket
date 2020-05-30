@@ -29,6 +29,6 @@
       tlsideBracket.play()
       activeSB = true
     }
-    console.log(activeSB);
+    console.log('Smallfinal: ' + activeSB);
   })
 })()

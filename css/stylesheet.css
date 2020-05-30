@@ -265,10 +265,6 @@ input{
   color: white;
 }
 
-.textbox.hover:hover i{
-  opacity: 0.6; 
-  display: flex;}
-
 .rounds.left i, .rounds.left{
   right: -15px; 
   justify-content: flex-end;
