@@ -236,9 +236,6 @@ button:hover{
   position: relative;
 }
 
-/*.textbox.lost{background-image: url(../assets/imgs/themes/taddl/textfield-lost.svg)}
-.textbox.won{background-image: url(../assets/imgs/themes/taddl/textfield-won.svg);}*/
-
 input{
   display: flex;
   margin: auto;
