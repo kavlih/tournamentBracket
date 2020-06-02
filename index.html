@@ -18,14 +18,19 @@
 
 <body>
   <div id="logo">
-    <img src="assets/imgs/themes/taddl/logo.svg" alt="">
+    <img src="assets/imgs/themeTaddl/logo.svg" alt="">
   </div>
 
   <div id="bracket">
 
-    <div id="rounds-container">
-
-      <div id="trophy">
+    <div id="end-screen">
+      <div id="second-container">
+        <div id="second-box">
+          <input type="text" id="second" readonly>
+        </div>
+        <img src="/assets/imgs/themeTaddl/medaille-second.svg">
+      </div>
+      <div id="trophy-container">
         <svg version="1.1" id="trophy" x="0px" y="0px"
           viewBox="0 0 38 44">
           <style type="text/css">
@@ -36,7 +41,7 @@
             .st4{fill:#FFFFFE;}
             .st5{fill:#DBB93E;}
           </style>
-          <image id="head" style="overflow:visible;" width="82" height="100" xlink:href="assets/imgs/themes/taddl/taddl.png"  transform="matrix(0.267 0 0 0.267 8.1019 8.2995)">
+          <image id="head" style="overflow:visible;" width="82" height="100" xlink:href="assets/imgs/themeTaddl/taddl.png"  transform="matrix(0.267 0 0 0.267 8.1019 8.2995)">
           </image>
           <g id="pot">
             <path id="dropshadow" class="st0" d="M30,42v2H8v-2l0,                         0v-2h6v-2h2v-2h2v-4h2v6h-2v4H30z M6,12v2H4v8H0V12H6z M38,12v10h-4v-8h-2v-2
@@ -60,46 +65,57 @@
             <path id="top_1_" class="st4" d="M24,2v2h2V2H24z M26,4v2h2V4H26z M10,4v2h2V4H10z M18,0v2h-2V0H18z M16,2v2h-4V2H16z"/>
           </g>
         </svg>
+        <div id="winnerbox">
+          <input type="text" id="winner" readonly>
+        </div>
       </div>
+      <div id="third-container">
+        <div id="third-box">
+          <input type="text" id="third" readonly>
+        </div>
+        <img src="/assets/imgs/themeTaddl/medaille-third.svg">
+      </div>
+    </div>
 
+    <div id="rounds-container">
       <div class="rounds eighth left">
         <div class="teams">
           <div class="textbox">
-            <input type="text" value="Toni">
+            <input type="text" class="player" value="Toni">
             <i class="fas fa-angle-double-right"></i>
           </div>
           <div class="textbox">
-            <input type="text" value="Joschi">
-            <i class="fas fa-angle-double-right"></i>
-          </div>
-        </div>
-        <div class="teams">
-          <div class="textbox">
-            <input type="text" value="BennyGee">
-            <i class="fas fa-angle-double-right"></i>
-          </div>
-          <div class="textbox">
-            <input type="text" value="Daniel">
+            <input type="text" class="player" value="Joschi">
             <i class="fas fa-angle-double-right"></i>
           </div>
         </div>
         <div class="teams">
           <div class="textbox">
-            <input type="text" value="Nia">
+            <input type="text" class="player" value="BennyGee">
             <i class="fas fa-angle-double-right"></i>
           </div>
           <div class="textbox">
-            <input type="text" value="Cengiz">
+            <input type="text" class="player" value="Daniel">
             <i class="fas fa-angle-double-right"></i>
           </div>
         </div>
         <div class="teams">
           <div class="textbox">
-            <input type="text" value="Nilo">
+            <input type="text" class="player" value="Nia">
             <i class="fas fa-angle-double-right"></i>
           </div>
           <div class="textbox">
-            <input type="text" value="Taddl">
+            <input type="text" class="player" value="Cengiz">
+            <i class="fas fa-angle-double-right"></i>
+          </div>
+        </div>
+        <div class="teams">
+          <div class="textbox">
+            <input type="text" class="player" value="Nilo">
+            <i class="fas fa-angle-double-right"></i>
+          </div>
+          <div class="textbox">
+            <input type="text" class="player" value="Taddl">
             <i class="fas fa-angle-double-right"></i>
           </div>
         </div>
@@ -107,41 +123,41 @@
       <div class="rounds eighth right">
         <div class="teams">
           <div class="textbox">
-            <input type="text" value="TJ">
+            <input type="text" class="player" value="TJ">
             <i class="fas fa-angle-double-left"></i>
           </div>
           <div class="textbox">
-            <input type="text" value="Rob">
-            <i class="fas fa-angle-double-left"></i>
-          </div>
-        </div>
-        <div class="teams">
-          <div class="textbox">
-            <input type="text" value="Nota">
-            <i class="fas fa-angle-double-left"></i>
-          </div>
-          <div class="textbox">
-            <input type="text" value="Vik">
+            <input type="text" class="player" value="Rob">
             <i class="fas fa-angle-double-left"></i>
           </div>
         </div>
         <div class="teams">
           <div class="textbox">
-            <input type="text" value="dyzzy">
+            <input type="text" class="player" value="Nota">
             <i class="fas fa-angle-double-left"></i>
           </div>
           <div class="textbox">
-            <input type="text" value="Ruffy">
+            <input type="text" class="player" value="Vik">
             <i class="fas fa-angle-double-left"></i>
           </div>
         </div>
         <div class="teams">
           <div class="textbox">
-            <input type="text" value="Dirk">
+            <input type="text" class="player" value="dyzzy">
             <i class="fas fa-angle-double-left"></i>
           </div>
           <div class="textbox">
-            <input type="text" value="Unge">
+            <input type="text" class="player" value="Ruffy">
+            <i class="fas fa-angle-double-left"></i>
+          </div>
+        </div>
+        <div class="teams">
+          <div class="textbox">
+            <input type="text" class="player" value="Dirk">
+            <i class="fas fa-angle-double-left"></i>
+          </div>
+          <div class="textbox">
+            <input type="text" class="player" value="Unge">
             <i class="fas fa-angle-double-left"></i>
           </div>
         </div>
@@ -149,21 +165,21 @@
       <div class="rounds quarter left">
         <div class="teams">
           <div class="textbox">
-            <input type="text" readonly>
+            <input type="text" class="player" readonly>
             <i class="fas fa-angle-double-right"></i>
           </div>
           <div class="textbox">
-            <input type="text" readonly>
+            <input type="text" class="player" readonly>
             <i class="fas fa-angle-double-right"></i>
           </div>
         </div>
         <div class="teams">
           <div class="textbox">
-            <input type="text" readonly>
+            <input type="text" class="player" readonly>
             <i class="fas fa-angle-double-right"></i>
           </div>
           <div class="textbox">
-            <input type="text" readonly>
+            <input type="text" class="player" readonly>
             <i class="fas fa-angle-double-right"></i>
           </div>
         </div>
@@ -171,21 +187,21 @@
       <div class="rounds quarter right">
         <div class="teams">
           <div class="textbox">
-            <input type="text" readonly>
+            <input type="text" class="player" readonly>
             <i class="fas fa-angle-double-left"></i>
           </div>
           <div class="textbox">
-            <input type="text" readonly>
+            <input type="text" class="player" readonly>
             <i class="fas fa-angle-double-left"></i>
           </div>
         </div>
         <div class="teams">
           <div class="textbox">
-            <input type="text" readonly>
+            <input type="text" class="player" readonly>
             <i class="fas fa-angle-double-left"></i>
           </div>
           <div class="textbox">
-            <input type="text" readonly>
+            <input type="text" class="player" readonly>
             <i class="fas fa-angle-double-left"></i>
           </div>
         </div>
@@ -193,11 +209,11 @@
       <div class="rounds semi left">
         <div class="teams">
           <div class="textbox">
-            <input type="text" readonly>
+            <input type="text" class="player" readonly value="x">
             <i class="fas fa-angle-double-right"></i>
           </div>
           <div class="textbox">
-            <input type="text" readonly>
+            <input type="text" class="player" readonly value="a">
             <i class="fas fa-angle-double-right"></i>
           </div>
         </div>
@@ -205,11 +221,11 @@
       <div class="rounds semi right">
         <div class="teams">
           <div class="textbox">
-            <input type="text" readonly>
+            <input type="text" class="player" readonly value="y">
             <i class="fas fa-angle-double-left"></i>
           </div>
           <div class="textbox">
-            <input type="text" readonly>
+            <input type="text" class="player" readonly value="b">
             <i class="fas fa-angle-double-left"></i>
           </div>
         </div>
@@ -217,11 +233,11 @@
       <div class="rounds final">
         <div class="teams">
           <div class="textbox top">
-            <input type="text" readonly>
+            <input type="text" class="player" readonly value="BennyGee">
             <i class="fas fa-angle-double-right"></i>
           </div>
           <div class="textbox bottom">
-            <input type="text" readonly>
+            <input type="text" class="player" readonly value="y">
             <i class="fas fa-angle-double-left"></i>
           </div>
         </div>
@@ -273,18 +289,18 @@
 
       <div class="rounds smallfinal left">
         <div class="textbox">
-          <input type="text" readonly>
+          <input type="text" class="player" readonly>
           <i class="fas fa-angle-double-right"></i>
         </div>
       </div>
 
       <div id="smallfinal-trophy">
-        <img src="assets/imgs/themes/taddl/medaille.svg" alt="">
+        <img src="assets/imgs/themeTaddl/medaille-third.svg">
       </div>
 
       <div class="rounds smallfinal right">
         <div class="textbox">
-          <input type="text" readonly>
+          <input type="text" class="player" readonly>
           <i class="fas fa-angle-double-left"></i>
         </div>
       </div>
@@ -330,7 +346,7 @@
         <button id="btn-shuffle" class="btn-small grey">
           <i class="fas fa-random"></i>
         </button>
-        <button id="btn-3rd" class="btn-small toggle">
+        <button id="btn-third" class="btn-small toggle">
           3rd
         </button>
         <button id="btn-clear" class="btn-small red">
@@ -441,4 +457,5 @@
 <script src="js/themes.js"></script>
 <script src="js/trophy.js"></script>
 <script src="js/updateWinner.js"></script>
+<script src="js/confetti.min.js"></script> <!-- github.com/mathusummut/confetti.js -->
 </html>

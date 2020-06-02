@@ -9,12 +9,12 @@
       clearWarning.classList.add('hidden')
     })
     // Reset
-    const allInputs = document.querySelectorAll('#rounds-container input')
+    const allInputs = document.querySelectorAll('#rounds-container .player')
 
     document.querySelector('#reset button.confirm').addEventListener('click', () => {
       for (let i = 0; i < allInputs.length; i++) {
         // Clear all inputs
-        document.querySelectorAll('#rounds-container input')[i].value = ''
+        document.querySelectorAll('#rounds-container .player')[i].value = ''
         // Remove classes
         document.querySelectorAll('.textbox')[i].classList.remove('won')
         document.querySelectorAll('.textbox')[i].classList.remove('lost')

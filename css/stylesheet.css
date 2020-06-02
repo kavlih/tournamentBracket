@@ -10,7 +10,9 @@
   .3  Rounds
   .4  Textbox
   .5  Textbox hover
-  .6  Trophy img
+.  END SCREEN
+  .1  Trophy
+  .2  2nd & 3rd
 .  SMALLFINAL
 .  BACKGROUND
 .  SETTINGS
@@ -168,6 +170,7 @@ button:hover{
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 #bracket .eighth.left{order: 1;}
@@ -221,32 +224,30 @@ button:hover{
 .rounds.semi .teams {height: 100%;}
 
 /* .4  Textbox ------------------*/
-.textbox{
+.textbox, #winnerbox, #second-box, #third-box{
   height: 50%;
   width: 100%;
   max-width: 180px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-  background-image: url(../assets/imgs/themes/taddl/textfield.svg);
+  background-image: url(../assets/imgs/themeTaddl/textfield.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
   position: relative;
 }
 
-input{
+.player, #winner, #second, #third{
   display: flex;
   margin: auto;
-  height: 100%;
-  width: 75%;
+  width: 100%;
   background-color: transparent;
   border: none;
   text-align: center;
   font-size: 12pt;
   color: white;
-  transform: translate(-1px, -2px);
+  padding: 0;
 }
 
 /* .5  Textbox hover ------------------*/
@@ -281,12 +282,12 @@ input{
 }
 
 .rounds.final .top i{
-  transform: translate(0, 45%);
+  top: 47%;
   align-items: flex-end;
 }
 
 .rounds.final .bottom i{
-  transform: translate(0, -45%);
+  bottom: 47%;
   align-items: flex-start;
 }
 
@@ -296,25 +297,67 @@ input{
 
 /*.rounds.eighth.hidden ~ .rounds.quarter{cursor: text;}*/
 
-/* .6  Trophy img ------------------*/
-#trophy{
+/* . END SCREEN ------------------------------------*/
+#end-screen{
+  height: 8vh;
+  width: 8vh;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: 1;
+  overflow: visible;
+}
+
+/* .1  Trophy ------------------*/
+#winnerbox{
+  display: none;
+  height: 0;
+}
+
+#trophy-container{
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 10vh;
   width: 10vh;
+  cursor: pointer;
+  display: flex;
+  overflow: visible;
+  z-index: 1;
+}
+
+#trophy-container:hover{
   transition: all 0.2s ease;
+  transform: scale(1.1) rotate(3deg);
+  background: radial-gradient(circle, rgba(255, 190, 0, 0.5), rgba(255, 190, 0, 0) 75%);
 }
 
-#trophy:hover{
-  transform: translate(-50%, -50%) scale(1.1) rotate(3deg);
-  background: radial-gradient(circle, rgba(255, 190, 0, 0.5), rgba(255, 190, 0, 0) 60%);
+/* .2  2nd & 3rd ------------------*/
+#second, #third, #winner{
+  cursor: default;
+  width: 95%;
 }
 
-#trophy svg{
+#second-box, #third-box{
+  margin-bottom: -2.2vh;
+  z-index: -1;
+}
+
+#second-container, #third-container{
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 15vh;
+  width: 15vh;
+  margin-top: 13vh; 
+}
+
+#trophy, #second-container img, #third-container img{
   height: 50%;
 }
 

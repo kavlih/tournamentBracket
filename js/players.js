@@ -11,10 +11,10 @@
 
   tlBracketStrings
   // Hide players
-  .to('.rounds.eighth .textbox input', {opacity: 0})
+  .to('.rounds.eighth .textbox .player', {opacity: 0})
   .to('#rounds-container .rounds.eighth .textbox', {maxWidth: 0, minWidth: 0}, 0)
   .fromTo('#rounds-container .rounds.eighth', {width: '100%', margin: '0 1%'}, {width: '0%', margin: '0 0%'}, 0)
-  .fromTo('#rounds-container .rounds.quarter input', {cursor: 'default'}, {cursor: 'text'}, 0)
+  .fromTo('#rounds-container .rounds.quarter .player', {cursor: 'default'}, {cursor: 'text'}, 0)
   // Animate SVG strings
   .to('#_1_erlines', {attr:{x1:"744.2",y1:"283.2",x2:"587.8",y2:"283.2"}}, 0)
   .to('#_1_erlines_1_', {attr:{x1:"744.2",y1:"475.7",x2:"894.4",y2:"475.7"}}, 0)
@@ -72,7 +72,7 @@
   activePlayers = 1
 
   function setPlayers(index) {
-    const quarterInputs = document.querySelectorAll('#bracket .quarter input')
+    const quarterInputs = document.querySelectorAll('#bracket .quarter .player')
     // Toggle button styles
     players[activePlayers].classList.remove('active')
     activePlayers = index

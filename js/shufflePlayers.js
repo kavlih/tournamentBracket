@@ -1,7 +1,7 @@
 (function(){
   // Check how many players are playing (defined in players.js)
-  if (activePlayers == 0) allPlayers = document.querySelectorAll('.rounds.quarter input')
-  if (activePlayers == 1) allPlayers = document.querySelectorAll('.rounds.eighth input')
+  if (activePlayers == 0) allPlayers = document.querySelectorAll('.rounds.quarter .player')
+  if (activePlayers == 1) allPlayers = document.querySelectorAll('.rounds.eighth .player')
 
   // GSAP Timeline ------------------------------------------
   const tlShuffle = new gsap.timeline({paused: true, defaults: {ease: Power1.easeInOut}})

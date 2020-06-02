@@ -12,10 +12,11 @@
   .set('#side-bracket', {display: 'flex'}, 0)
   .to('#side-bracket', {height: '10%'}, 0)
   .fromTo('#rounds-container', {height: '100%'}, {height: '95%'}, 0)
+  .to('#end-screen', {y: '-20%'}, 0)
   .to('#smallfinal-trophy', {opacity: 1}, 0)
   
   // Event listener ------------------------------------------
-  const sideBracketBtn = document.querySelector('#btn-3rd')
+  const sideBracketBtn = document.querySelector('#btn-third')
   
   let activeSB = false
   

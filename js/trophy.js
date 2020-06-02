@@ -9,12 +9,12 @@
       yoyo: true,
     },
     onComplete: function () {
-      gsap.set('#trophy, #trophy #cover, #trophy #pot', {clearProps: 'all'});
+      gsap.set('#trophy, #trophy #cover, #trophy #pot', {clearProps: 'scale, transform, transformOrigin, x, y'});
     }
   })
   
   tlTrophyShake
-  .to('#trophy', {scale: 1.06,}, 0)
+  .to('#trophy', {scale: 1.06}, 0)
   
   .add('rotateLeft', 0)
   
@@ -67,6 +67,7 @@
   
   .to('#trophy #cover', {y: -13,}, 0)
   .to('#trophy #pot', {y: 5,}, 0)
+  .to('#winnerbox', {y: 5,}, 0)
   .to('#trophy #head', {x: 9, y: -9}, 0)
 
   // Event listener ---------------------------------------------------------------

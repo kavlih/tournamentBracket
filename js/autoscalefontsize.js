@@ -1,6 +1,6 @@
 (function(){
   // Event listeners & defaults ------------------------------------------
-  const allInputs = document.querySelectorAll('#rounds-container input')
+  const allInputs = document.querySelectorAll('#bracket input')
 
   for (let i = 0; i < allInputs.length; i++) {
     // Set max lenght
