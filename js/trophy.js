@@ -71,9 +71,11 @@
   .to('#trophy #head', {x: 9, y: -9}, 0)
 
   // Event listener ---------------------------------------------------------------
+  // Click animation
   let counter = 0
+  const trophy = document.querySelector('#trophy')
   
-  document.querySelector('#trophy').addEventListener('click', () => {
+  trophy.addEventListener('click', () => {
     if (!tlTrophyOpen.isActive() && !tlTrophyShake.isActive()) {
       if (counter < 4) {
         tlTrophyShake.play(0)
@@ -85,4 +87,9 @@
       console.log(counter);
     } else console.log('slow down')
   })
+
+
+  
+  
+  
 })()

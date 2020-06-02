@@ -330,12 +330,6 @@ button:hover{
   z-index: 1;
 }
 
-#trophy-container:hover{
-  transition: all 0.2s ease;
-  transform: scale(1.1) rotate(3deg);
-  background: radial-gradient(circle, rgba(255, 190, 0, 0.5), rgba(255, 190, 0, 0) 75%);
-}
-
 /* .2  2nd & 3rd ------------------*/
 #second, #third, #winner{
   cursor: default;

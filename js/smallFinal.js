@@ -18,7 +18,7 @@
   // Event listener ------------------------------------------
   const sideBracketBtn = document.querySelector('#btn-third')
   
-  let activeSB = false
+  activeSB = false
   
   sideBracketBtn.addEventListener('click', () => {  
     if (activeSB === true) {

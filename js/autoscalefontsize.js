@@ -24,7 +24,7 @@
 // Function ------------------------------------------
 function scaleFontSize(input) {    
   // If text is overflowing
-  if (input.scrollHeight > input.clientHeight || input.scrollWidth > input.clientWidth){
+  if (input.height > input.clientHeight || input.scrollWidth > input.clientWidth){
     // Font-size -1
     input.style.fontSize = parseInt(input.style.fontSize) - 1 + 'pt'  
     // Repeat
