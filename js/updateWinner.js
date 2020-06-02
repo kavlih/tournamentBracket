@@ -129,6 +129,12 @@
         winner.parentNode.classList.add('won')
         loser.parentNode.classList.add('lost')
       }
+
+      const allInputs = document.querySelectorAll('#bracket input')
+
+      for (let i = 0; i < allInputs.length; i++) { 
+        scaleFontSize(allInputs[i])
+      }
     }
     
     // Event listener
@@ -137,8 +143,6 @@
       if(!allArrows[i].parentNode.parentNode.parentNode.classList.contains('final') && !allArrows[i].parentNode.parentNode.classList.contains('smallfinal')){
         // Function
         updateWinner(i, e.target)
-        // Check font size
-        scaleFontSize(newIndex)
         
         // GSAP Animation - arrow click
         const tlArrowsClick = new gsap.timeline()

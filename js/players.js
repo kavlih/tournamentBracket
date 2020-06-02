@@ -68,9 +68,10 @@
   // Function ------------------------------------------
 
   const players = document.querySelectorAll('#players button')
+  
   // Set default players (1=16 Players, 0=8 Players)
   activePlayers = 1
-
+  
   function setPlayers(index) {
     const quarterInputs = document.querySelectorAll('#bracket .quarter .player')
     // Toggle button styles

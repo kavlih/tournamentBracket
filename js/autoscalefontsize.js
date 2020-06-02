@@ -38,5 +38,5 @@ function scaleFontSize(input) {
       input.style.fontSize = parseInt(input.style.fontSize) - 2 + 'pt'
     } else {scaleFontSize(input)}
   }
-  console.log(input.style.fontSize);
+  //console.log(input.style.fontSize);
 }
