@@ -1,5 +1,5 @@
 (function(){
-  // GSAP Timeline ------------------------------------------
+  // GSAP Timeline - Show smallfinal ------------------------------------------
   const tlsideBracket = new gsap.timeline ({
     paused: true, 
     defaults: {
@@ -16,21 +16,22 @@
   .to('#smallfinal-trophy', {opacity: 1}, 0)
 
   
-  // Event listener ------------------------------------------
+  // Event listener - Click on '3rd' button ------------------------------------------
   const sideBracketBtn = document.querySelector('#btn-third')
   
-  activeSB = false
+  activeSmallfinal = false
   
   sideBracketBtn.addEventListener('click', () => {  
-    if (activeSB === true) {
+    // Hide if visible or show if hidden
+    if (activeSmallfinal === true) {
       sideBracketBtn.classList.remove('active')
       tlsideBracket.reverse()
-      activeSB = false
+      activeSmallfinal = false
     } else {
       sideBracketBtn.classList.add('active')
       tlsideBracket.play()
-      activeSB = true
+      activeSmallfinal = true
     }
-    console.log('Smallfinal: ' + activeSB);
+    console.log('Smallfinal: ' + activeSmallfinal);
   })
 })()

@@ -6,9 +6,9 @@
     const tlSpin = new gsap.timeline()
 
     tlSpin
-    .to(logo, 0.50, {y: -15})
+    .to(logo, 0.50, {y: '-1.5vh'})
     .to(logo, {duration: 1, rotationY: 360}, 0)
-    .to(logo, 1.00, {y: 0, ease: Bounce.easeOut}, 0.80)
+    .to(logo, 1.00, {y: '0vh', ease: Bounce.easeOut}, 0.80)
     .set(logo, {rotationY: 0})
   })
 

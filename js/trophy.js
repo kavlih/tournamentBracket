@@ -1,5 +1,5 @@
 (function(){
-  // GSAP Timeline 1 ---------------------------------------------------------------
+  // GSAP Timeline - Trophy Shake ---------------------------------------------------------------
   const tlTrophyShake = new gsap.timeline({
     paused: true,
     repeat: 1,
@@ -15,7 +15,7 @@
   
   tlTrophyShake
   .to('#trophy', {scale: 1.06}, 0)
-  
+
   .add('rotateLeft', 0)
   
   .to('#trophy #pot', {
@@ -29,9 +29,9 @@
     transform: 'rotate(-5deg)',
     transformOrigin: 'top',
   }, 'rotateLeft')
-  
+
   .add('rotateRight')
-  
+
   .to('#trophy #pot', {
     transform: 'rotate(-5deg)',
     transformOrigin: 'center',
@@ -40,11 +40,11 @@
   .to('#trophy #cover', {
     x: -2,
     y: -2,
-    transform: 'rotate(+5deg)',
+    transform: 'rotate(5deg)',
     transformOrigin: 'top',
   }, 'rotateRight')
   
-  // GSAP Timeline 2 ---------------------------------------------------------------
+  // GSAP Timeline - Tropy open ---------------------------------------------------------------
   const tlTrophyOpen = new gsap.timeline({
     paused: true,
     yoyo: true,
@@ -70,12 +70,10 @@
   .to('#winnerbox', {y: 5,}, 0)
   .to('#trophy #head', {x: 9, y: -9}, 0)
 
-  // Event listener ---------------------------------------------------------------
-  // Click animation
+  // Event listener - Click on trophy ---------------------------------------------------------------
   let counter = 0
-  const trophy = document.querySelector('#trophy')
   
-  trophy.addEventListener('click', () => {
+  document.querySelector('#trophy').addEventListener('click', () => {
     if (!tlTrophyOpen.isActive() && !tlTrophyShake.isActive()) {
       if (counter < 4) {
         tlTrophyShake.play(0)
@@ -87,9 +85,4 @@
       console.log(counter);
     } else console.log('slow down')
   })
-
-
-  
-  
-  
 })()

@@ -13,7 +13,7 @@
       .set('#end-back-btn', {display: 'flex'}, 'complete')
       .fromTo('#end-back-btn', {opacity: 0, scale: 0}, {opacity: 1, scale: 1, ease: Back.easeInOut, duration: 1.5}, 'complete')
 
-      if (activeSB === false) tlEndScreen.fromTo('#message', {display: 'flex', opacity: 0}, {delay: 3, opacity: 0.5, scale: 1, duration: 3.}, 'complete')
+      if (activeSmallfinal === false) tlEndScreen.fromTo('#message', {display: 'flex', opacity: 0}, {delay: 3, opacity: 0.5, scale: 1, duration: 3.}, 'complete')
 
       tlEndScreen.to('#trophy-container, #second-container, #third-container', {
         background: 'radial-gradient(circle, rgba(255, 190, 0, 0.5), rgba(255, 190, 0, 0) 70%)',
@@ -92,7 +92,7 @@
     .to('#settings', {opacity: 1}, 'scale2')
     .set('#logo img, settings', {clearProps: 'all'}, 'scale2')
 
-    if(activeSB === true) tlBack.to('#end-screen', {y: '-20%'}, 'scale2')
+    if(activeSmallfinal === true) tlBack.to('#end-screen', {y: '-20%'}, 'scale2')
 
     tlBack
     .fromTo('#end-screen', {scale: 0}, {opacity: 1, scale: 1}, 'scale2')
@@ -108,20 +108,21 @@
     endArrows[i].addEventListener('click', (e) => {
       let textbox = e.target.parentNode  
 
+      // Get played game
       if(endArrows[i].parentNode.parentNode.parentNode.classList.contains('final')){
-        activePlayers = textbox.parentNode.parentNode.querySelectorAll('.player')
+        activeGame = textbox.parentNode.parentNode.querySelectorAll('.player')
         activeTextboxes = textbox.parentNode.children
       }
       if(endArrows[i].parentNode.parentNode.classList.contains('smallfinal')){
-        activePlayers = document.querySelectorAll('#side-bracket .player')
+        activeGame = document.querySelectorAll('#side-bracket .player')
         activeTextboxes = document.querySelectorAll('#side-bracket .textbox')
       }
 
       // Get winner and loser
       winner = textbox.querySelector('.player')
 
-      if (winner == activePlayers[0]) loser = activePlayers[1]
-      else loser = activePlayers[0]
+      if (winner == activeGame[0]) loser = activeGame[1]
+      else loser = activeGame[0]
       
       console.log('Winner: ' + winner.value);
       console.log('Loser: ' + loser.value);  
@@ -145,30 +146,23 @@
           activeTextboxes[i].classList.remove('won')
           activeTextboxes[i].classList.remove('lost')
         }
-
         winner.parentNode.classList.add('won')
         loser.parentNode.classList.add('lost')
       }
 
-      const tlsetLoser = new gsap.timeline({
-        onStart: function () {
-          gsap.set(loser, {clearProps: 'opacity'});
-          gsap.set(winner, {clearProps: 'opacity'});
-        }
-      })
-    
-      tlsetLoser.to(loser, {duration: 0.5, opacity: 0.4, ease: Power1.easeInOut}, 0)
+      // GSAP - reduce visibility
+      gsap.set(loser, {clearProps: 'opacity'});
+      gsap.set(winner, {clearProps: 'opacity'});
+      gsap.to(loser, {duration: 0.5, opacity: 0.4, ease: Power1.easeInOut})
 
       // If final was played
       if(document.querySelector('.final .textbox').classList.contains('won') || document.querySelector('.final .textbox').classList.contains('lost')){
-        // If smallfinal is hidden OR if small final is visible and was played
-        // 'activeSB' defined in smallFinal.js
-        if(activeSB === false || activeSB === true && document.querySelector('#side-bracket .textbox').classList.contains('won') || document.querySelector('#side-bracket .textbox').classList.contains('lost')){
-          // If small final was played
+        // If smallfinal is hidden OR if small final is visible and was played ('activeSmallfinal' defined in smallFinal.js)
+        if(activeSmallfinal === false || activeSmallfinal === true && document.querySelector('#side-bracket .textbox').classList.contains('won') || document.querySelector('#side-bracket .textbox').classList.contains('lost')){
+          // Add 2nd and 3rd to end screen if small final was played
           if(document.querySelector('#side-bracket .textbox').classList.contains('won') || document.querySelector('#side-bracket .textbox').classList.contains('lost')){
             tlEndScreen
             .set('#second-container, #third-container', {display: 'flex'})
-
             .to('#end-screen', {y: '0%'}, '1st')
             
             .add('2nd')
@@ -179,6 +173,7 @@
             .add(function(){scaleFontSize(document.querySelector('#third'))}, '3rd')
             .fromTo('#third-container', {scale: 0, x: '-21.5vw'}, {scale: 1, x: '-5vw'}, '3rd')
           }
+          // Play animation
           tlEndScreen.play(0)
         }
       }

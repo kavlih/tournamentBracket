@@ -4,11 +4,11 @@
   document.querySelector('#btn-clear').addEventListener('click', () => { 
     // Show warning
     clearWarning.classList.remove('hidden')
-    // Hide warning
+    // Hide warning - cancel
     document.querySelector('#reset button.cancel').addEventListener('click', () => {
       clearWarning.classList.add('hidden')
     })
-    // Reset
+    // Reset - confirm
     const allInputs = document.querySelectorAll('#rounds-container .player')
 
     document.querySelector('#reset button.confirm').addEventListener('click', () => {
@@ -21,7 +21,7 @@
         // Clear props
         gsap.set(allInputs[i], {clearProps: 'opacity'})
       }
-      // Hide warning
+      // Hide warning again
       clearWarning.classList.add('hidden')
     })
   })

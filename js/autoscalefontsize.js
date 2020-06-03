@@ -1,5 +1,5 @@
 (function(){
-  // Event listeners & defaults ------------------------------------------
+  // Triggers & input defaults ------------------------------------------
   const allInputs = document.querySelectorAll('#bracket input')
 
   for (let i = 0; i < allInputs.length; i++) {
@@ -13,7 +13,7 @@
     scaleFontSize(allInputs[i])
   }
 
-  // Trigger function on windows change
+  // Trigger function on window resize
   window.addEventListener('resize', function(){
     for (let i = 0; i < allInputs.length; i++) {
       scaleFontSize(allInputs[i])

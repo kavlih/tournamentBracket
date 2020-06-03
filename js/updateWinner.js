@@ -3,20 +3,20 @@
   const allArrows = document.querySelectorAll('#bracket i')
 
   for (let i = 0; i < allTextboxes.length; i++) {
-    // Hover over textboxes ------------------------------------------
+    // Event listener - Hover over textboxes ------------------------------------------
     allTextboxes[i].addEventListener('mouseover', () => {
 
-      // Define 'activePlayers'
-      if(!allTextboxes[i].parentNode.classList.contains('smallfinal')) activePlayers = allTextboxes[i].parentNode.querySelectorAll('.player')
-      else activePlayers = document.querySelectorAll('#side-bracket .player')
+      // Get played game
+      if(!allTextboxes[i].parentNode.classList.contains('smallfinal')) activeGame = allTextboxes[i].parentNode.querySelectorAll('.player')
+      else activeGame = document.querySelectorAll('#side-bracket .player')
 
-      // Display arrows only if both inputs of a team are not empty & if target is not a winner 
-      if(activePlayers[0].value !== '' && activePlayers[1].value !== '' && !allTextboxes[i].classList.contains('won')){
+      // GSAP - Display arrows if both players of the game are defined & if target is not a winner 
+      if(activeGame[0].value !== '' && activeGame[1].value !== '' && !allTextboxes[i].classList.contains('won')){
         gsap.set(allArrows[i], {opacity: 0.6, display: 'flex'})
       }
     })
 
-    // Reset
+    // Event listener - Reset
     allTextboxes[i].addEventListener('mouseout', () => {
       gsap.set(allArrows[i], {clearProps: 'all'});
     })
@@ -43,7 +43,7 @@
       ease: Power0.easeNone,
     }, 0)
 
-    // Different tweens for different positions of the textboxes
+    // Different directions for different positions of the textboxes
     if (allTextboxes[i].parentNode.parentNode.classList.contains('right') || allTextboxes[i].parentNode.classList.contains('right'))
     tlArrowsHover.to(allArrows[i], {x: -2,}, 0)
 
@@ -56,17 +56,18 @@
     if (allTextboxes[i].classList.contains('bottom'))
     tlArrowsHover.to(allArrows[i], {y: -2,}, 0)
 
-    // Event listeners
+    // Event listeners - Hover over arrows
     allArrows[i].addEventListener('mouseover', () => {
       tlArrowsHover.play(0)
     })
 
+    // Event listeners - Reset
     allArrows[i].addEventListener('mouseout', () => {
       tlArrowsHover.kill()
       gsap.set(allArrows[i], {clearProps: 'all'});
     })
 
-    // Click on arrows ------------------------------------------
+    // Click on arrows function ------------------------------------------
     function updateWinner(index, arrow){
       let textbox = arrow.parentNode
       let teams = textbox.parentNode
@@ -125,26 +126,22 @@
           teams.children[i].classList.remove('won')
           teams.children[i].classList.remove('lost')
         }
-    
         winner.parentNode.classList.add('won')
         loser.parentNode.classList.add('lost')
       }
 
-      const allInputs = document.querySelectorAll('#bracket input')
-
-      for (let i = 0; i < allInputs.length; i++) { 
-        scaleFontSize(allInputs[i])
-      }
+      // Check font size
+      for (let i = 0; i < document.querySelectorAll('#bracket input').length; i++) {scaleFontSize(document.querySelectorAll('#bracket input')[i])}
     }
     
-    // Event listener
+    // Event listener - Click on arrows ------------------------------------------
     allArrows[i].addEventListener('click', (e) => {
       // If not final or smallfinal
       if(!allArrows[i].parentNode.parentNode.parentNode.classList.contains('final') && !allArrows[i].parentNode.parentNode.classList.contains('smallfinal')){
-        // Function
+        // Call function
         updateWinner(i, e.target)
         
-        // GSAP Animation - arrow click
+        // GSAP Animation - Arrow click ------------------------------------------
         const tlArrowsClick = new gsap.timeline()
 
         tlArrowsClick
@@ -157,23 +154,16 @@
         if (allArrows[i].parentNode.parentNode.parentNode.classList.contains('left'))
         tlArrowsClick.to(allArrows[i], {x: 25, ease: Power4.easeIn}, 0)
 
-        // GSAP Animation - update winner
-        const tlUpdateWinner = new gsap.timeline({
-          defaults: {
-            delay: 0.2,
-          },
-          onStart: function () {
-            gsap.set(loser, {clearProps: 'opacity'});
-            gsap.set(winner, {clearProps: 'opacity'});
-          }
-        })
+        // GSAP Animation - Update winner ------------------------------------------
+        const tlUpdateWinner = new gsap.timeline({defaults: {delay: 0.2}})
 
         tlUpdateWinner
+        .set(loser, {clearProps: 'opacity'}, 0)
+        .set(winner, {clearProps: 'opacity'}, 0)
         .to(loser, {opacity: 0.4}, 0)
         .from(newIndex, {opacity: 0}, 0)
 
         if (newIndex.parentNode.parentNode.parentNode.classList.contains('left') || newIndex.parentNode.classList.contains('top')) tlUpdateWinner.from(newIndex, {x: -40}, 0)
-
         if (newIndex.parentNode.parentNode.parentNode.classList.contains('right') || newIndex.parentNode.classList.contains('bottom')) tlUpdateWinner.from(newIndex, {x: 40}, 0)
 
         if (loser.parentNode.parentNode.parentNode.classList.contains('semi')) {

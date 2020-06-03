@@ -67,26 +67,26 @@
 
   // Function ------------------------------------------
 
-  const players = document.querySelectorAll('#players button')
+  const playerBtns = document.querySelectorAll('#players button')
   
   // Set default players (1=16 Players, 0=8 Players)
-  activePlayers = 1
+  amountOfPlayers = 1
   
   function setPlayers(index) {
     const quarterInputs = document.querySelectorAll('#bracket .quarter .player')
     // Toggle button styles
-    players[activePlayers].classList.remove('active')
-    activePlayers = index
-    players[activePlayers].classList.add('active')
+    playerBtns[amountOfPlayers].classList.remove('active')
+    amountOfPlayers = index
+    playerBtns[amountOfPlayers].classList.add('active')
     // Run GSAP timeline
-    if (activePlayers == 0) {
+    if (amountOfPlayers == 0) {
       for (let i = 0; i < quarterInputs.length; i++) {
         quarterInputs[i].readOnly = false
       }
       tlBracketStrings.play()
       if (window.matchMedia( "(min-width: 1400px)" ).matches) tlTranslate.play()
     }
-    if (activePlayers == 1) {
+    if (amountOfPlayers == 1) {
       for (let i = 0; i < quarterInputs.length; i++) {
         quarterInputs[i].readOnly = true
       }
@@ -98,18 +98,18 @@
 
   // Check window size for translate animation
   window.onresize = function() {
-    if (activePlayers == 0) {
+    if (amountOfPlayers == 0) {
       if (window.matchMedia( "(min-width: 1400px)" ).matches) tlTranslate.play()
       else tlTranslate.reverse()
     }
-    if (activePlayers == 1) tlTranslate.reverse()
+    if (amountOfPlayers == 1) tlTranslate.reverse()
   }
   // Buttons
-  for (let i = 0; i < players.length; i++) {
-    players[i].addEventListener('click', (evt) => {
+  for (let i = 0; i < playerBtns.length; i++) {
+    playerBtns[i].addEventListener('click', (evt) => {
       setPlayers(evt.target.getAttribute('data-index'))
     })
   }
   // Run
-  setPlayers(activePlayers)
+  setPlayers(amountOfPlayers)
 })()

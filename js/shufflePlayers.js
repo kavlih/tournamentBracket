@@ -1,20 +1,21 @@
 (function(){
   // Check how many players are playing (defined in players.js)
-  if (activePlayers == 0) allPlayers = document.querySelectorAll('.rounds.quarter .player')
-  if (activePlayers == 1) allPlayers = document.querySelectorAll('.rounds.eighth .player')
+  if (amountOfPlayers == 0) allPlayers = document.querySelectorAll('.rounds.quarter .player')
+  if (amountOfPlayers == 1) allPlayers = document.querySelectorAll('.rounds.eighth .player')
 
-  // GSAP Timeline ------------------------------------------
+  // GSAP Timeline - Shuffle ------------------------------------------
   const tlShuffle = new gsap.timeline({paused: true, defaults: {ease: Power1.easeInOut}})
 
   tlShuffle
   .fromTo(allPlayers, {opacity: 1}, {opacity: 0})
   
-  // Append shuffled players
   .add(function () {
     let index = 0
 
     for (let i = 0; i < allPlayers.length; i++) {
+      // Append shuffled players
       allPlayers[i].value = allPlayersArr[index]
+      // Check font size
       scaleFontSize(allPlayers[i])
       index++
     }
@@ -28,7 +29,7 @@
     scale: 1,
   })
 
-  // Event listener ------------------------------------------
+  // Event listener - Click on shuffle button ------------------------------------------
   document.querySelector('#btn-shuffle').addEventListener('click', () => {
     if (!tlShuffle.isActive()) {
       // Create array from inputs
