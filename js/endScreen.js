@@ -7,12 +7,21 @@
       ease: Back.easeInOut,
     },
     onComplete: function(){
-      gsap.set('#end-back-btn', {display: 'flex'}, 0)
-      gsap.fromTo('#end-back-btn', {opacity: 0, scale: 0}, {opacity: 1, scale: 1, ease: Back.easeInOut, duration: 1.5}, 0)
-      if (activeSB === false) {
-        gsap.set('#message', {display: 'flex'})
-        gsap.fromTo('#message', {opacity: 0}, {delay: 3, opacity: 0.5, scale: 1, duration: 3.})
-      }
+      tlEndScreen
+      .add('complete')
+
+      .set('#end-back-btn', {display: 'flex'}, 'complete')
+      .fromTo('#end-back-btn', {opacity: 0, scale: 0}, {opacity: 1, scale: 1, ease: Back.easeInOut, duration: 1.5}, 'complete')
+
+      if (activeSB === false) tlEndScreen.fromTo('#message', {display: 'flex', opacity: 0}, {delay: 3, opacity: 0.5, scale: 1, duration: 3.}, 'complete')
+
+      tlEndScreen.to('#trophy-container, #second-container, #third-container', {
+        background: 'radial-gradient(circle, rgba(255, 190, 0, 0.5), rgba(255, 190, 0, 0) 70%)',
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+        ease: Power1.easeInOut,
+      }, 'complete')
     }
   })
 
@@ -23,22 +32,25 @@
 
   .add('1st')
 
-  .set('#end-screen', {height: '100%', width: '100%', y: 0}, '1st')
+  tlEndScreen
+  .fromTo('#end-screen', {height: '8vh', width: '8vh'}, {height: '100%', width: '100%'}, '1st')
   .to('#trophy-container', {height: '60vh', width: '60vh'}, '1st')
   .add(function(){scaleFontSize(document.querySelector('#winner'))}, '1st')
-  .to('#winnerbox', {display: 'flex', maxWidth: 'unset', height: '16%', }, '1st')
+  .to('#winnerbox', {display: 'flex', maxWidth: 'unset', height: '16%'}, '1st')
   .to('#trophy', {marginBottom: '-2.5vh'}, '1st')
   .to('#logo img', {ease: Power2.easeInOut, height: '24vh'}, '1st')
 
   .add(function() {confetti.toggle()}, '1st')
   .fromTo('#winner', {opacity: 0, scale: 0}, {opacity: 1, scale: 1}, '1st')
-  
+
+  .to('#trophy-container, #second-container, #third-container', {background: 'radial-gradient(circle, rgba(255, 190, 0, 0.5), rgba(255, 190, 0, 0) 50%)'}, '1st')
+
   // Hover on trophy (disable hover if 'tlEndScreen' is active or playing) ------------------------------------------
   const trophyContainer = document.querySelector('#trophy-container')
 
   trophyContainer.addEventListener('mouseenter', () => {
     if(tlEndScreen.progress() === 0){
-      gsap.to('#trophy-container', {duration: 0.3, scale: 1.1, rotate: 3, background: 'radial-gradient(circle, rgba(255, 190, 0, 0.5), rgba(255, 190, 0, 0) 75%)'})    
+      gsap.to('#trophy-container', {duration: 0.3, scale: 1.1, rotate: 3, background: 'radial-gradient(circle, rgba(255, 190, 0, 0.5), rgba(255, 190, 0, 0) 65%)'})    
     }
   })
 
@@ -65,21 +77,27 @@
     
     .add('reset')
 
-    .set('#second-container, #third-container, #trophy-container, #winnerbox', {clearProps: 'all'}, 'reset')
+    .set('#trophy-container, #second-container, #third-container, #winnerbox, #message', {clearProps: 'all'}, 'reset')
     .set('#trophy', {clearProps: 'margin-bottom'}, 'reset')
     .set('#winner', {clearProps: 'opacity, scale'}, 'reset')
-    .set('#end-screen', {clearProps: 'height, width'}, 'reset')
+    .set('#end-screen', {clearProps: 'width,height'}, 'reset')
     .set('#end-back-btn', {display: 'none', clearProps: 'z-index'}, 'reset')
     
+    tlEndScreen.kill()
+
+    tlBack
     .add('scale2')
 
     .to('#rounds-container, #side-bracket', {opacity: 1}, 'scale2')
     .to('#settings', {opacity: 1}, 'scale2')
     .set('#logo img, settings', {clearProps: 'all'}, 'scale2')
 
-    if(activeSB === true) tlBack.fromTo('#end-screen', {scale: 0}, {opacity: 1, scale: 1, y: '-20%'}, 'scale2')
-    if(activeSB === false) tlBack.fromTo('#end-screen', {scale: 0}, {opacity: 1, scale: 1}, 'scale2')
+    if(activeSB === true) tlBack.to('#end-screen', {y: '-20%'}, 'scale2')
+
+    tlBack
+    .fromTo('#end-screen', {scale: 0}, {opacity: 1, scale: 1}, 'scale2')
     .set('#end-screen', {clearProps: 'opacity, scale'}, 'scale2')
+
   })
 
   
@@ -151,6 +169,8 @@
             tlEndScreen
             .set('#second-container, #third-container', {display: 'flex'})
 
+            .to('#end-screen', {y: '0%'}, '1st')
+            
             .add('2nd')
             .add(function(){scaleFontSize(document.querySelector('#second'))}, '2rd')
             .fromTo('#second-container', {scale: 0, x: '21.5vw'}, {scale: 1, x: '5vw'}, '2rd')
