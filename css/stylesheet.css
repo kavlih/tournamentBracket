@@ -116,11 +116,13 @@ body{
 }
 
 #gitIcon:active i{transform: scale(0.9); color: rgba(0, 0, 0, 0.3)}
+#gitIcon:hover i{color: rgba(0, 0, 0, 0.15)}
 
 #logo{
   margin-top: 20px;
   position: absolute;
   top: 0;
+  z-index: 2;
 }
 
 #logo img{

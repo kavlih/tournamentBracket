@@ -1,5 +1,18 @@
 (function(){
-  // GSAP Timeline ------------------------------------------
+  // GSAP Timeline - logo spin ------------------------------------------
+  const logo = document.querySelector('#logo')
+
+  logo.addEventListener('click', () => {
+    const tlSpin = new gsap.timeline()
+
+    tlSpin
+    .to(logo, 0.50, {y: -15})
+    .to(logo, {duration: 1, rotationY: 360}, 0)
+    .to(logo, 1.00, {y: 0, ease: Bounce.easeOut}, 0.80)
+    .set(logo, {rotationY: 0})
+  })
+
+  // GSAP Timeline - settings ------------------------------------------
   const tlSettings = gsap.timeline({
     paused:true, 
     defaults: {
