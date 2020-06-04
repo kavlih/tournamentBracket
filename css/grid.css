@@ -35,7 +35,7 @@
 .lines-horizontally .line{
   height: 3px;
   width: 100%;
-  margin-top: 37px;
+  margin-top: 30px;
   
   animation-name: move;
   animation-duration: 3s;
@@ -44,6 +44,6 @@
 }
 
 @keyframes move {
-  from  {transform: translate(0, -80px);}
+  from  {transform: translate(0, -66px);}
   to  {transform: translate(0, 0);}
 }
