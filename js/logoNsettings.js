@@ -30,7 +30,7 @@
 
   .to('#inner-settings', {
     padding: '0 30', 
-    width: '315',
+    width: '325',
     ease: Power1.easeInOut
   }, 'step1')
 
