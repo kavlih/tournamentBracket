@@ -56,7 +56,7 @@
   .add(function(){scaleFontSize(document.querySelector('#winner'))}, '1st')
   .to('#winnerbox', {display: 'flex', maxWidth: 'unset', height: '16%'}, '1st')
   .to('#trophy', {marginBottom: '-2.5vh'}, '1st')
-  .to('#logo img', {ease: Power2.easeInOut, height: '24vh'}, '1st')
+  .to('#logo img', {ease: Power2.easeInOut, height: '21vh'}, '1st')
 
   .add(function() {confetti.toggle()}, '1st')
   .fromTo('#winner', {opacity: 0, scale: 0}, {opacity: 1, scale: 1}, '1st')
@@ -75,7 +75,7 @@
     .set('#end-back-btn', {zIndex: 0})
     .to('#end-back-btn', {duration: 0.4, opacity: 0}, 'scale1')
     .fromTo('#end-screen', {scale: 1}, {scale: 20, opacity: 0}, 'scale1')
-    .to('#logo img', {height: '30vh'}, 'scale1')
+    .to('#logo img', {height: '27vh'}, 'scale1')
     
     .add('reset')
 
@@ -90,7 +90,7 @@
 
     .to('#rounds-container, #side-bracket', {opacity: 1}, 'scale2')
     .to('#settings', {opacity: 1}, 'scale2')
-    .set('#logo img, settings', {clearProps: 'all'}, 'scale2')
+    .set('#settings', {clearProps: 'all'}, 'scale2')
 
     if(activeSmallfinal === true) tlBack.to('#end-screen', {y: '-20%'}, 'scale2')
 
@@ -99,6 +99,7 @@
     .set('#end-screen', {clearProps: 'opacity, scale'}, 'scale2')
 
     .add(function(){tlEndScreen.pause(0)})
+    .set('#logo img', {clearProps: 'height'})
   })
   
   // Event listener - Click on final/smallfinal arrows ------------------------------------------
