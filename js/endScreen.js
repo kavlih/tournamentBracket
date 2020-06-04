@@ -1,5 +1,23 @@
 (function(){
-  // GSAP Animation - end screen ------------------------------------------
+  // GSAP Animation - Hover on trophy (disable hover if 'tlEndScreen' is active or playing) ------------------------------------------
+  const trophyContainer = document.querySelector('#trophy-container')
+
+  trophyContainer.addEventListener('mouseenter', () => {
+    if(tlEndScreen.progress() === 0){
+      console.log('inactive');
+      
+      gsap.to('#trophy-container', {duration: 0.3, scale: 1.1, rotate: 3, background: 'radial-gradient(circle, rgba(255, 190, 0, 0.5), rgba(255, 190, 0, 0) 65%)'})    
+    } else console.log('active')
+  })
+
+  trophyContainer.addEventListener('mouseleave', () => {
+    if(tlEndScreen.progress() === 0){
+      gsap.to('#trophy-container', {duration: 0.3, scale: 1, rotate: 0, background: 'none'})
+      gsap.to('#trophy-container', {clearProps: 'all'})    
+    }
+  })
+
+  // GSAP Animation - Show End screen ------------------------------------------
   const tlEndScreen = new gsap.timeline({
     paused: true,
     defaults: {
@@ -45,23 +63,7 @@
 
   .to('#trophy-container, #second-container, #third-container', {background: 'radial-gradient(circle, rgba(255, 190, 0, 0.5), rgba(255, 190, 0, 0) 50%)'}, '1st')
 
-  // Hover on trophy (disable hover if 'tlEndScreen' is active or playing) ------------------------------------------
-  const trophyContainer = document.querySelector('#trophy-container')
-
-  trophyContainer.addEventListener('mouseenter', () => {
-    if(tlEndScreen.progress() === 0){
-      gsap.to('#trophy-container', {duration: 0.3, scale: 1.1, rotate: 3, background: 'radial-gradient(circle, rgba(255, 190, 0, 0.5), rgba(255, 190, 0, 0) 65%)'})    
-    }
-  })
-
-  trophyContainer.addEventListener('mouseleave', () => {
-    if(tlEndScreen.progress() === 0){
-      gsap.to('#trophy-container', {duration: 0.3, scale: 1, rotate: 0, background: 'none'})
-      gsap.to('#trophy-container', {clearProps: 'all'})    
-    }
-  })
-
-  // GSAP Animation - back button ------------------------------------------
+  // GSAP Animation - Back button ------------------------------------------
   document.querySelector('#end-back-btn button').addEventListener('click', () => {
     const tlBack = new gsap.timeline({defaults: {duration: 0.7, ease: Power2.easeIn}})
     
@@ -82,8 +84,6 @@
     .set('#winner', {clearProps: 'opacity, scale'}, 'reset')
     .set('#end-screen', {clearProps: 'width,height'}, 'reset')
     .set('#end-back-btn', {display: 'none', clearProps: 'z-index'}, 'reset')
-    
-    tlEndScreen.kill()
 
     tlBack
     .add('scale2')
@@ -98,10 +98,10 @@
     .fromTo('#end-screen', {scale: 0}, {opacity: 1, scale: 1}, 'scale2')
     .set('#end-screen', {clearProps: 'opacity, scale'}, 'scale2')
 
+    .add(function(){tlEndScreen.pause(0)})
   })
-
   
-  // Event listener ------------------------------------------
+  // Event listener - Click on final/smallfinal arrows ------------------------------------------
   const endArrows = document.querySelectorAll('.final i, .smallfinal i')
 
   for (let i = 0; i < endArrows.length; i++) {
