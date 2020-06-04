@@ -3,11 +3,9 @@
   const trophyContainer = document.querySelector('#trophy-container')
 
   trophyContainer.addEventListener('mouseenter', () => {
-    if(tlEndScreen.progress() === 0){
-      console.log('inactive');
-      
+    if(tlEndScreen.progress() === 0){      
       gsap.to('#trophy-container', {duration: 0.3, scale: 1.1, rotate: 3, background: 'radial-gradient(circle, rgba(255, 190, 0, 0.5), rgba(255, 190, 0, 0) 65%)'})    
-    } else console.log('active')
+    }
   })
 
   trophyContainer.addEventListener('mouseleave', () => {
@@ -17,7 +15,7 @@
     }
   })
 
-  // GSAP Animation - Show End screen ------------------------------------------
+  // GSAP Animation - Show end screen ------------------------------------------
   const tlEndScreen = new gsap.timeline({
     paused: true,
     defaults: {
@@ -45,8 +43,7 @@
 
   tlEndScreen
   .to('#rounds-container, #side-bracket', {opacity: 0.05, ease: Power1.easeInOut}, 0)
-  .to('#settings', {opacity: 0, ease: Power1.easeInOut}, 0)
-  .set('#settings', {display: 'none'})
+  .to('#settings', {scale: 0, opacity: 0, ease: Power1.easeInOut}, 0)
 
   .add('1st')
 
@@ -71,7 +68,6 @@
     .add('scale1')
 
     .add(function() {confetti.toggle()}, 'scale1')
-    .set('#settings', {display: 'flex'}, 'scale1')
     .set('#end-back-btn', {zIndex: 0})
     .to('#end-back-btn', {duration: 0.4, opacity: 0}, 'scale1')
     .fromTo('#end-screen', {scale: 1}, {scale: 20, opacity: 0}, 'scale1')
@@ -89,8 +85,7 @@
     .add('scale2')
 
     .to('#rounds-container, #side-bracket', {opacity: 1}, 'scale2')
-    .to('#settings', {opacity: 1}, 'scale2')
-    .set('#settings', {clearProps: 'all'}, 'scale2')
+    .to('#settings', {scale: 1, opacity: 1}, 'scale2')
 
     if(activeSmallfinal === true) tlBack.to('#end-screen', {y: '-20%'}, 'scale2')
 

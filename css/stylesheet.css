@@ -100,6 +100,11 @@ button:active, #settings-icon:active, #info:active, .textbox:after{
 body{
   width: 100vw;
   height: 100vh;
+}
+
+#wrapper{
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -113,6 +118,7 @@ body{
   right: 15px;
   font-size: 18pt;
   color: rgba(0, 0, 0, 0.2);
+  z-index: 2;
 }
 
 #gitIcon:active i{transform: scale(0.9); color: rgba(0, 0, 0, 0.3)}
@@ -146,6 +152,7 @@ button{
   margin: 0;
   background-color: transparent;
   border: 2px solid white;
+  padding: 0;
 }
 
 button.btn-wide{
@@ -437,7 +444,7 @@ button:hover{
   align-items: flex-end;
   position: absolute;
   bottom: 0;
-  z-index: -1;
+  z-index: 0;
 }
 
 #gradient{
