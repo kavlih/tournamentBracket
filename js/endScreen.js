@@ -163,11 +163,27 @@
             
             .add('2nd')
             .add(function(){scaleFontSize(document.querySelector('#second'))}, '2rd')
-            .fromTo('#second-container', {scale: 0, x: '21.5vw'}, {scale: 1, x: '5vw'}, '2rd')
+            .fromTo('#second-container', {
+              opacity: 0, 
+              scale: 0, 
+              x: '21.5vw'
+            }, {
+              scale: 1,
+              opacity: 1,   
+              x: '5vw'
+            }, '2rd')
 
             .add('3rd')
             .add(function(){scaleFontSize(document.querySelector('#third'))}, '3rd')
-            .fromTo('#third-container', {scale: 0, x: '-21.5vw'}, {scale: 1, x: '-5vw'}, '3rd')
+            .fromTo('#third-container', {
+              scale: 0,
+              opacity: 0,  
+              x: '-21.5vw'
+            }, {
+              scale: 1,
+              opacity: 1,  
+              x: '-5vw'
+            }, '3rd')
           }
           // Play end screen animation
           tlEndScreen.play(0)
