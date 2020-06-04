@@ -400,6 +400,8 @@ button:hover{
   display: none;
 }
 
+#end-back-btn button{width: 90px;}
+
 /* . SMALLFINAL ------------------------------------*/
 #side-bracket {
   width: 40%;
