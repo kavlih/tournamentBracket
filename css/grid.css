@@ -1,6 +1,6 @@
 #grid{
   position: relative;
-  transform: perspective(400px) rotatex(45deg);
+  transform: perspective(400px) rotatex(45deg) scale(1.5);
 }
 
 .line{
@@ -29,13 +29,13 @@
 
 .lines-vertically .line{
   height: 100%;
-  width: 7px;
+  width: 5px;
 }
 
 .lines-horizontally .line{
-  height: 5px;
+  height: 3px;
   width: 100%;
-  margin-top: 40px;
+  margin-top: 37px;
   
   animation-name: move;
   animation-duration: 3s;
@@ -44,6 +44,6 @@
 }
 
 @keyframes move {
-  from  {transform: translate(0, -90px);}
+  from  {transform: translate(0, -80px);}
   to  {transform: translate(0, 0);}
 }
