@@ -17,6 +17,7 @@
 .  BACKGROUND
 .  SETTINGS
   .2  Warning
+  .3  Info
 .  THEMES
 */
 
@@ -93,7 +94,7 @@ input{
   overflow: visible;
 }
 
-button:active, #settings-icon:active, #info:active, .textbox:after{
+button:active, #settings-icon:active, #infoBtn:active, .textbox:after{
   transform: scale(0.9);
 }
 
@@ -469,6 +470,7 @@ button:hover{
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: visible;
 }
 
 #settings-icon{
@@ -503,6 +505,7 @@ button:hover{
   height: 0;
   width: 0;
   opacity: 0;
+  overflow: visible;
 }
 
 #inner-settings > div:not(:first-child){
@@ -518,14 +521,15 @@ button:hover{
 #inner-settings > div > button{margin-top: 10px;}
 #inner-settings > #mid-icons > button:first-child{margin-top: 0;}
 
-#info{
+#infoBtn{
   color: white;
   position: absolute;
   right: 10px;
   top: 10px;
+  z-index: 1;
 }
 
-#info i:hover{
+#infoBtn i:hover{
   color: #2071A4;
   cursor: pointer;
 }
@@ -558,9 +562,28 @@ button:hover{
   opacity: 0 !important;
 }
 
-#reset button.cancel{opacity: 0.4;}
+#reset button.cancel{opacity: 0.5; margin-right: 20px;}
 #reset button.cancel:hover{opacity: 1;}
 #reset button.confirm{border: 2px solid white;}
+
+/* .3  Info ------------------*/
+#infos{
+  height: inherit !important;
+  width: inherit !important;
+  overflow: visible;
+  position: absolute;
+}
+
+#infos img{
+  display: none;
+  position: absolute;
+}
+
+#infoPlayers{transform: translate(-225.9px, -121px) scale(0.4)}
+#infoReset{transform: translate(18px, 65px) scale(0.3)}
+#infoShuffle{transform: translate(-89px, -179px) scale(0.4)}
+#infoThemes{transform: translate(238px, -70px) scale(0.5)}
+#infoThird{transform: translate(117px, -136px) scale(0.6)}
 
 /* . THEMES ------------------------------------*/
 #themes button:nth-child(3):after, #themes button:nth-child(3):before{

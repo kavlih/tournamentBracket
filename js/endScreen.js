@@ -146,7 +146,7 @@
         loser.parentNode.classList.add('lost')
       }
 
-      // GSAP - reduce visibility
+      // GSAP - reduce visibility of loser
       gsap.set(loser, {clearProps: 'opacity'});
       gsap.set(winner, {clearProps: 'opacity'});
       gsap.to(loser, {duration: 0.5, opacity: 0.4, ease: Power1.easeInOut})
@@ -169,7 +169,7 @@
             .add(function(){scaleFontSize(document.querySelector('#third'))}, '3rd')
             .fromTo('#third-container', {scale: 0, x: '-21.5vw'}, {scale: 1, x: '-5vw'}, '3rd')
           }
-          // Play animation
+          // Play end screen animation
           tlEndScreen.play(0)
         }
       }
