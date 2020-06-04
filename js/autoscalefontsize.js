@@ -10,7 +10,7 @@
     // Trigger function on input change
     allInputs[i].addEventListener("input", (e) => scaleFontSize(e.target))
     // Run function on start (use only if there are player placeholders)
-    scaleFontSize(allInputs[i])
+    // scaleFontSize(allInputs[i])
   }
 
   // Trigger function on window resize
