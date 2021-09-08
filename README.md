@@ -1,1 +1,1 @@
-# www.humblerumble.party
+# https://humblerumble.party
